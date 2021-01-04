@@ -30,11 +30,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
    	Plug 'SirVer/ultisnips'
    	Plug 'honza/vim-snippets'
     Plug 'mlaursen/vim-react-snippets'
-	Plug 'prettier/vim-prettier', {
-		\ 'do': 'yarn install',
-		\ 'branch': 'release/0.x'
-		\ }
-    Plug 'metakirby5/codi.vim'
+    Plug 'prettier/vim-prettier', {
+        \ 'do': 'yarn install',
+        \ 'branch': 'release/0.x'
+        \ }
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'morhetz/gruvbox'
 	
