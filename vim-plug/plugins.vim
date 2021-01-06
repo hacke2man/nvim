@@ -16,12 +16,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'vim-airline/vim-airline'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
     Plug 'airblade/vim-rooter'
     Plug 'mhinz/vim-startify'
     Plug 'liuchengxu/vim-which-key'
-    Plug 'justinmk/vim-sneak'
     Plug 'mhinz/vim-signify'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
@@ -36,5 +33,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
         \ }
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'morhetz/gruvbox'
-	
+    Plug 'mattn/emmet-vim'
+    Plug 'unblevable/quick-scope'
+    Plug 'ChristianChiarulli/far.vim'
+    Plug 'mbbill/undotree'
+    Plug 'matze/vim-move'
+    Plug 'tpope/vim-surround'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+    Plug 'stsewd/fzf-checkout.vim'
+    
 call plug#end()

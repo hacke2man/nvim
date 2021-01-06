@@ -65,8 +65,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>r  <Plug>(coc-format-selected)
+nmap <leader>r  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -179,5 +179,4 @@ let g:coc_explorer_global_presets = {
 \ }
 
 nmap <space>e :CocCommand explorer<CR>
-nmap <space>f :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
