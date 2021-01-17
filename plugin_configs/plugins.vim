@@ -23,6 +23,10 @@ call plug#begin()
     Plug 'mhinz/vim-startify'
     Plug 'liuchengxu/vim-which-key'
     Plug 'ryanoasis/vim-devicons'
+    Plug 'SirVer/ultisnips'
+    Plug 'mlaursen/vim-react-snippets'
+    Plug 'maxmellon/vim-jsx-pretty'
+    Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -31,3 +35,5 @@ autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
+
+let g:UltiSnipsExpandTrigger='<C-e>'                
