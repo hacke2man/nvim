@@ -18,11 +18,13 @@ set smarttab
 set splitbelow
 set noswapfile
 set visualbell
+set wildmenu
 " complete
 " completeopt
 " fileformats
 " guifont, guifontset
-" matchpairs
+set matchpairs+=':'
+set matchpairs+=":"
 
 " TextEdit might fail if hidden is not set.
 set hidden

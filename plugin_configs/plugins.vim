@@ -27,6 +27,8 @@ call plug#begin()
     Plug 'mlaursen/vim-react-snippets'
     Plug 'maxmellon/vim-jsx-pretty'
     Plug 'sheerun/vim-polyglot'
+    Plug 'tpope/vim-vinegar'
+    Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
