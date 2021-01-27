@@ -29,8 +29,15 @@ call plug#begin()
     Plug 'sheerun/vim-polyglot'
     Plug 'tpope/vim-vinegar'
     Plug 'tpope/vim-sleuth'
+    Plug 'ThePrimeagen/vim-be-good'
+    Plug 'pacha/vem-tabline'
+    Plug 'airblade/vim-rooter'
 
 call plug#end()
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yank', 'coc-vimlsp',
+                            \  'coc-ultisnips', 'coc-snippets', 'coc-prettier', 
+                            \  'coc-marketplace', 'coc-gitignore', 'coc-emmet',
+                            \  'coc-fzf-preview', 'coc-react-refactor']
 
 " Automatically install missing plugins on startup
 autocmd VimEnter *

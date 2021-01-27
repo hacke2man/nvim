@@ -19,3 +19,15 @@ endfunction
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nnoremap <silent><leader>f :CocCommand fzf-preview.ProjectFiles<Return>
+nnoremap <silent><leader>b :CocCommand fzf-preview.Buffers<Return>
+nnoremap <silent><leader>gs :CocCommand fzf-preview.GitStatus<Return>
+nnoremap <silent><leader>ga :CocCommand fzf-preview.GitActions<Return>
+nnoremap <silent><leader>g :CocCommand fzf-preview.ProjectGrep
+nnoremap <leader>p :Prettier<Return>
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nnoremap <leader>csw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>ce :CocList extensions<Return>
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>

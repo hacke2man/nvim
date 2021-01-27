@@ -5,7 +5,7 @@ set nowrap
 set relativenumber
 set nu
 set autoindent
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set colorcolumn=+80
 hi ColorColumn ctermbg=darkgray
 set expandtab
