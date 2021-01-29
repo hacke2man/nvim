@@ -11,7 +11,6 @@ call plug#begin()
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'gruvbox-community/gruvbox'
     Plug 'vim-airline/vim-airline'
     Plug 'unblevable/quick-scope'
@@ -32,12 +31,15 @@ call plug#begin()
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'pacha/vem-tabline'
     Plug 'airblade/vim-rooter'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-lua/plenary.nvim'
 
 call plug#end()
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yank', 'coc-vimlsp',
                             \  'coc-ultisnips', 'coc-snippets', 'coc-prettier', 
                             \  'coc-marketplace', 'coc-gitignore', 'coc-emmet',
-                            \  'coc-fzf-preview', 'coc-react-refactor']
+                            \  'coc-react-refactor']
 
 " Automatically install missing plugins on startup
 autocmd VimEnter *
