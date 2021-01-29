@@ -8,5 +8,5 @@ source ~/.config/nvim/plugin_configs/coc.vim
 source ~/.config/nvim/plugin_configs/quickscope.vim
 source ~/.config/nvim/plugin_configs/start_screen.vim
 source ~/.config/nvim/plugin_configs/laf.vim
-source ~/.config/nvim/plugin_configs/whichkey.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
+source ~/.config/nvim/plugin_configs/floaterm.vim

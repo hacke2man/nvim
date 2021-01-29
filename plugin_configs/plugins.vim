@@ -20,7 +20,6 @@ call plug#begin()
     Plug 'tpope/vim-rhubarb'
     Plug 'junegunn/gv.vim'
     Plug 'mhinz/vim-startify'
-    Plug 'liuchengxu/vim-which-key'
     Plug 'ryanoasis/vim-devicons'
     Plug 'SirVer/ultisnips'
     Plug 'mlaursen/vim-react-snippets'
@@ -35,6 +34,7 @@ call plug#begin()
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'Yggdroot/indentLine'
+    Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yank', 'coc-vimlsp',
