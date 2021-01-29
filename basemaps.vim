@@ -1,6 +1,7 @@
 " base nvim mappings
 
 let mapleader = " "
-nnoremap <silent><C-n> :bnext<Return>
-nnoremap <silent><C-p> :bprevious<Return>
+nnoremap <silent><leader>l :bnext<Return>
+nnoremap <silent><leader>h :bprevious<Return>
+nnoremap <silent><leader>w :w<Return>
 nnoremap <leader>sr :%s/<c-r>=expand("<cword>")<cr>/

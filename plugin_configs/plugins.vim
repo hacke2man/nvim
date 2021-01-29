@@ -34,6 +34,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'Yggdroot/indentLine'
 
 call plug#end()
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yank', 'coc-vimlsp',
