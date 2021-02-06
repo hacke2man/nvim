@@ -19,6 +19,7 @@ set splitbelow
 set noswapfile
 set visualbell
 set wildmenu
+set cursorline
 " complete
 " completeopt
 " fileformats

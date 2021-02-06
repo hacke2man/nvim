@@ -33,7 +33,7 @@ call plug#begin()
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'Yggdroot/indentLine'
+    Plug 'nathanaelkane/vim-indent-guides'
     Plug 'voldikss/vim-floaterm'
     Plug 'wincent/loupe'
 
