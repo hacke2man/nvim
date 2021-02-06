@@ -35,6 +35,7 @@ call plug#begin()
     Plug 'nvim-lua/plenary.nvim'
     Plug 'Yggdroot/indentLine'
     Plug 'voldikss/vim-floaterm'
+    Plug 'wincent/loupe'
 
 call plug#end()
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yank', 'coc-vimlsp',
