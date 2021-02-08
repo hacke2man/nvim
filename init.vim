@@ -1,4 +1,4 @@
-" Base Configuration
+" Nvim Configuration
 source ~/.config/nvim/settings.vim
 source ~/.config/nvim/basemaps.vim
 
