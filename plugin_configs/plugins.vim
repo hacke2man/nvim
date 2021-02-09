@@ -14,15 +14,17 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
     Plug 'neoclide/coc.nvim'
     Plug 'SirVer/ultisnips'
+    Plug 'terryma/vim-multiple-cursors'
 
 " laf
     Plug 'gruvbox-community/gruvbox'
-    Plug 'vim-airline/vim-airline'
+    Plug 'shinchu/lightline-gruvbox.vim'
+    Plug 'itchyny/lightline.vim'
     Plug 'mhinz/vim-signify'
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'sheerun/vim-polyglot'
     Plug 'pacha/vem-tabline'
+    Plug 'sheerun/vim-polyglot'
     Plug 'nathanaelkane/vim-indent-guides'
 
 " movement
@@ -30,6 +32,7 @@ call plug#begin()
     Plug 'wincent/loupe'
 
 " backend?
+    Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'
     Plug 'nvim-lua/plenary.nvim'
@@ -42,7 +45,7 @@ call plug#begin()
     Plug 'junegunn/gv.vim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'voldikss/vim-floaterm'
-    Plug 'Mizuchi/vim-ranger'
+    Plug 'tpope/vim-vinegar'
 
 call plug#end()
 

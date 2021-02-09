@@ -6,13 +6,15 @@ func Eatchar(pat)
     return (c =~ a:pat) ? '' : c
 endfunc
 
+" abbrev
 cnoreabbrev fl set foldlevel=<c-r>=Eatchar('\s')<Return>
 cnoreabbrev soi source init.vim
 cnoreabbrev e. e ./
 
 " Y now yanks to the end of the line
 nnoremap Y y$
-nnoremap <c-h> :b
+
+nnoremap <Return> @@
 
 " Better window navigation
 nnoremap <C-h> <C-w>h
