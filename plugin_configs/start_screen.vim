@@ -7,3 +7,5 @@ let g:startify_lists = [
           \ { 'type': 'files',     'header': ['   MRU']            },
           \ { 'type': 'commands',  'header': ['   Commands']       },
           \ ]
+
+nnoremap <silent><leader>SC :SClose<Return>

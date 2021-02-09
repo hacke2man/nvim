@@ -11,11 +11,17 @@ hi ColorColumn ctermbg=darkgray
 set expandtab
 set incsearch
 set scrolloff=8
+set sidescrolloff=10
 set shiftround
 set shiftwidth=4
 set signcolumn=yes
 set smarttab
+set foldmethod=syntax
+set foldlevelstart=1
+
 set splitbelow
+set splitright
+
 set noswapfile
 set visualbell
 set wildmenu
@@ -52,3 +58,7 @@ if has("patch-8.1.1564")
 else
   set signcolumn=yes
 endif
+
+set listchars=trail:~,extends:>,precedes:<
+set list
+set fillchars=fold:\ 

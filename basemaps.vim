@@ -1,5 +1,15 @@
 " base nvim mappings
 
+
+func Eatchar(pat)
+    let c = nr2char(getchar(0))
+    return (c =~ a:pat) ? '' : c
+endfunc
+
+cnoreabbrev fl set foldlevel=<c-r>=Eatchar('\s')<Return>
+cnoreabbrev soi source init.vim
+cnoreabbrev e. e ./
+
 " Y now yanks to the end of the line
 nnoremap Y y$
 nnoremap <c-h> :b
@@ -25,7 +35,7 @@ nnoremap <silent><leader>h :bprevious<Return>
 
 nnoremap <leader>wb :write<Return>
 nnoremap <leader>wa :wall<Return>
-nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<cr>/
+nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
 nnoremap <leader>n :noh<Return>
 nnoremap <leader>bd :bdelete<Return>
-nnoremap <leader>qq :quit<Return>
+nnoremap <leader>q :quit<Return>
