@@ -23,7 +23,6 @@ call plug#begin()
     Plug 'mhinz/vim-signify'
     Plug 'mhinz/vim-startify'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'pacha/vem-tabline'
     Plug 'sheerun/vim-polyglot'
     Plug 'nathanaelkane/vim-indent-guides'
 
