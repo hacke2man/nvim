@@ -17,7 +17,7 @@ set shiftwidth=4
 set signcolumn=yes
 set smarttab
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevelstart=100
 
 set splitbelow
 set splitright

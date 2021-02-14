@@ -13,6 +13,7 @@ cnoreabbrev e. e ./
 
 " Y now yanks to the end of the line
 nnoremap Y y$
+nnoremap yaa ggyG<c-o>
 
 nnoremap <Return> @@
 
