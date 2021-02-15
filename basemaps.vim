@@ -8,7 +8,7 @@ endfunc
 
 " abbrev
 cnoreabbrev fl set foldlevel=<c-r>=Eatchar('\s')<Return>
-cnoreabbrev soi source init.vim
+cnoreabbrev soi source ~/.config/nvim/init.vim
 cnoreabbrev e. e ./
 
 " Y now yanks to the end of the line

@@ -12,6 +12,7 @@ source ~/.config/nvim/plugin_configs/start_screen.vim
 source ~/.config/nvim/plugin_configs/laf.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
 source ~/.config/nvim/plugin_configs/floaterm.vim
+source ~/.config/nvim/plugin_configs/victionary.vim
 
 " functions
 " source ~/.config/nvim/functions/r1ri_foldtext.vim

@@ -46,6 +46,9 @@ call plug#begin()
     Plug 'voldikss/vim-floaterm'
     Plug 'tpope/vim-vinegar'
 
+" info
+    Plug 'farconics/victionary'
+
 call plug#end()
 
 " auto install coc plugins

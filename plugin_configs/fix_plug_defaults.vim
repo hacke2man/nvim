@@ -5,7 +5,6 @@
 
 " UltiSnips
 " allow coc to use tab for expantion
-let g:UltiSnipsExpandTrigger='<C-e>'                
-
+let g:UltiSnipsExpandTrigger='<C-e>'
 
 let g:ranger_on_exit = 'bw!'
