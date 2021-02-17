@@ -62,3 +62,4 @@ endif
 set listchars=trail:~,extends:>,precedes:<
 set list
 set fillchars=fold:\ 
+set termguicolors

@@ -1,21 +1,20 @@
 " base nvim mappings
 
-
-func Eatchar(pat)
-    let c = nr2char(getchar(0))
-    return (c =~ a:pat) ? '' : c
-endfunc
-
 " abbrev
-cnoreabbrev fl set foldlevel=<c-r>=Eatchar('\s')<Return>
 cnoreabbrev soi source ~/.config/nvim/init.vim
 cnoreabbrev e. e ./
 
 " Y now yanks to the end of the line
 nnoremap Y y$
+" yank entire file file. FIXME: this does not work on the first line of a file
 nnoremap yaa ggyG<c-o>
 
-nnoremap <Return> @@
+" V selects to the end of a end
+nnoremap V v$h
+" vv selects linewise NOTE: vV also still works
+xnoremap v <esc>0v$
+" P in escence does not copy overwritten selection
+xnoremap P pgvy
 
 " Better window navigation
 nnoremap <C-h> <C-w>h
@@ -39,6 +38,7 @@ nnoremap <silent><leader>h :bprevious<Return>
 nnoremap <leader>wb :write<Return>
 nnoremap <leader>wa :wall<Return>
 nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
+nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>n :noh<Return>
 nnoremap <leader>bd :bdelete<Return>
 nnoremap <leader>q :quit<Return>

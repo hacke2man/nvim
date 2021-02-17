@@ -43,11 +43,11 @@ call plug#begin()
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'junegunn/gv.vim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'voldikss/vim-floaterm'
     Plug 'tpope/vim-vinegar'
 
 " info
-    Plug 'farconics/victionary'
+    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'szw/vim-dict'
 
 call plug#end()
 
