@@ -52,7 +52,7 @@ call plug#begin()
 call plug#end()
 
 " auto install coc plugins
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-yank', 'coc-vimlsp',
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
             \  'coc-snippets', 'coc-prettier', 
             \  'coc-marketplace', 'coc-gitignore', 'coc-emmet',
             \  'coc-react-refactor']
