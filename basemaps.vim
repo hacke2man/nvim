@@ -1,8 +1,14 @@
 " base nvim mappings
 
+func Eatchar(pat)
+   let c = nr2char(getchar(0))       
+   return (c =~ a:pat) ? '' : c      
+endfunc
+
 " abbrev
 cnoreabbrev soi source ~/.config/nvim/init.vim
 cnoreabbrev e. e ./
+cnoreabbrev ee e ./**/<c-r>=Eatchar('\s')<Return>
 
 " Y now yanks to the end of the line
 nnoremap Y y$

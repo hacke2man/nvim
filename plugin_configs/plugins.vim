@@ -44,6 +44,7 @@ call plug#begin()
     Plug 'junegunn/gv.vim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'tpope/vim-vinegar'
+    Plug 'mbbill/undotree'
 
 " info
     Plug 'norcalli/nvim-colorizer.lua'

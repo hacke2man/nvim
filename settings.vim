@@ -4,34 +4,37 @@ syntax on
 set nowrap
 set relativenumber
 set nu
-set autoindent
-set clipboard+=unnamedplus
 set colorcolumn=+80
 hi ColorColumn ctermbg=darkgray
-set expandtab
-set incsearch
 set scrolloff=8
 set sidescrolloff=10
+set signcolumn=yes
+
+set autoindent
+set expandtab
 set shiftround
 set shiftwidth=4
-set signcolumn=yes
 set smarttab
+
+set clipboard+=unnamedplus
+set incsearch
 set foldmethod=syntax
 set foldlevelstart=100
+set wildmenu
+set wildignore+=/home/liam/**/node_modules/**
+set wildignore+=/home/liam/**/plugged/**
+set matchpairs+=':'
 
 set splitbelow
 set splitright
 
 set noswapfile
 set visualbell
-set wildmenu
 set cursorline
 " complete
 " completeopt
 " fileformats
 " guifont, guifontset
-set matchpairs+=':'
-set matchpairs+=":"
 
 " TextEdit might fail if hidden is not set.
 set hidden

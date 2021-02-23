@@ -9,6 +9,7 @@ source ~/.config/nvim/plugin_configs/fix_plug_defaults.vim
 source ~/.config/nvim/plugin_configs/coc.vim
 source ~/.config/nvim/plugin_configs/quickscope.vim
 source ~/.config/nvim/plugin_configs/start_screen.vim
+source ~/.config/nvim/plugin_configs/undotree.vim
 source ~/.config/nvim/plugin_configs/laf.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
 
