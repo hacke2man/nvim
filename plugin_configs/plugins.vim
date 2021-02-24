@@ -11,9 +11,7 @@ call plug#begin()
 " editing
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
-    Plug 'jiangmiao/auto-pairs'
     Plug 'neoclide/coc.nvim'
-    Plug 'SirVer/ultisnips'
     Plug 'terryma/vim-multiple-cursors'
 
 " laf
