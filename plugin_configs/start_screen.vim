@@ -8,4 +8,4 @@ let g:startify_lists = [
           \ { 'type': 'commands',  'header': ['   Commands']       },
           \ ]
 
-nnoremap <silent><leader>SC :SClose<Return>
+nnoremap <silent><leader>sc :SClose<Return>
