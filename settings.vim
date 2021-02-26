@@ -62,7 +62,7 @@ else
   set signcolumn=yes
 endif
 
-set listchars=trail:~,extends:>,precedes:<
+set listchars=trail:~,extends:>,precedes:<,tab:>-
 set list
 set fillchars=fold:\ 
 set termguicolors
