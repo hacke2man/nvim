@@ -41,8 +41,7 @@ let mapleader = "\<Space>"
 nnoremap <silent><leader>l :bnext<Return>
 nnoremap <silent><leader>h :bprevious<Return>
 
-nnoremap <leader>wb :write<Return>
-nnoremap <leader>wa :wall<Return>
+nnoremap <leader>w :write<Return>
 nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
 nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>n :noh<Return>
