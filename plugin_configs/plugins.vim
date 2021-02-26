@@ -47,6 +47,7 @@ call plug#begin()
 " info
     Plug 'norcalli/nvim-colorizer.lua'
     Plug 'szw/vim-dict'
+    Plug 'ap/vim-buftabline'
 
 call plug#end()
 
