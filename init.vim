@@ -3,7 +3,6 @@
 " 1.make telescope mapping for adding a file as a split
 " 2.make mapping for closing split without deleting buffer
 "
-source ~/.config/nvim/functions.vim
 source ~/.config/nvim/settings.vim
 source ~/.config/nvim/basemaps.vim
 source ~/.config/nvim/autocomands.vim
