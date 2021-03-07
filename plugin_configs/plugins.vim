@@ -26,7 +26,6 @@ call plug#begin()
 
 " movement
     Plug 'unblevable/quick-scope'
-    Plug 'wincent/loupe'
 
 " backend?
     Plug 'tpope/vim-repeat'
@@ -41,8 +40,6 @@ call plug#begin()
     Plug 'ThePrimeagen/vim-be-good'
     Plug 'junegunn/gv.vim'
     Plug 'nvim-telescope/telescope.nvim'
-    Plug 'tpope/vim-vinegar'
-    Plug 'mbbill/undotree'
 
 " info
     Plug 'norcalli/nvim-colorizer.lua'
