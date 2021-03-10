@@ -45,5 +45,4 @@ nnoremap <leader>w :write<Return>
 nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
 nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>n :noh<Return>
-nnoremap <leader>bd :bdelete<Return>
-nnoremap <leader>q :quit<Return>
+nnoremap <leader>q :bdelete<Return>
