@@ -1,5 +1,6 @@
 " Nvim settings
 
+filetype plugin on
 syntax on
 set nowrap
 set relativenumber
