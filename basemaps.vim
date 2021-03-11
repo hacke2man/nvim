@@ -1,8 +1,8 @@
 " base nvim mappings
 
 func Eatchar(pat)
-   let c = nr2char(getchar(0))       
-   return (c =~ a:pat) ? '' : c      
+   let c = nr2char(getchar(0))
+   return (c =~ a:pat) ? '' : c
 endfunc
 
 " abbrev
@@ -39,10 +39,19 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') .'j'
 
 let mapleader = "\<Space>"
 nnoremap <silent><leader>l :bnext<Return>
-nnoremap <silent><leader>h :bprevious<Return>
+nnoremap <silent><leader>h :bpreviou<snd('%')Return>
 
 nnoremap <leader>w :write<Return>
 nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
 nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>n :noh<Return>
-nnoremap <leader>q :bdelete<Return>
+nnoremap <leader>q :cal Quit()<Return>
+
+function Quit()
+    let bufNum=len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+    if (bufNum == 1)
+        q
+    else
+        bd
+    endif
+endfunction

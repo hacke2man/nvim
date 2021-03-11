@@ -13,6 +13,7 @@ call plug#begin()
     Plug 'tpope/vim-commentary'
     Plug 'neoclide/coc.nvim'
     Plug 'terryma/vim-multiple-cursors'
+    Plug 'amadeus/vim-convert-color-to'
 
 " laf
     Plug 'gruvbox-community/gruvbox'

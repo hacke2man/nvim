@@ -22,6 +22,6 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nnoremap <leader>p :Prettier<Return>
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
-nnoremap <leader>csw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nnoremap <leader>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>ce :CocList extensions<Return>
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
