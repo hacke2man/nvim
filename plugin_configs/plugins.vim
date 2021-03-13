@@ -11,9 +11,14 @@ call plug#begin()
 " editing
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-commentary'
-    Plug 'neoclide/coc.nvim'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'amadeus/vim-convert-color-to'
+
+" Coc
+    Plug 'neoclide/coc.nvim'
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
+            \  'coc-snippets', 'coc-prettier', 'coc-marketplace',
+            \  'coc-gitignore', 'coc-emmet']
 
 " laf
     Plug 'gruvbox-community/gruvbox'
@@ -48,13 +53,6 @@ call plug#begin()
     Plug 'ap/vim-buftabline'
 
 call plug#end()
-
-" auto install coc plugins
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
-            \  'coc-snippets', 'coc-prettier', 
-            \  'coc-marketplace', 'coc-gitignore', 'coc-emmet',
-            \  'coc-react-refactor']
-"'coc-ultisnips',
 
 " Automatically install missing plugins on startup
 autocmd VimEnter *

@@ -39,7 +39,7 @@ nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') .'j'
 
 let mapleader = "\<Space>"
 nnoremap <silent><leader>l :bnext<Return>
-nnoremap <silent><leader>h :bpreviou<snd('%')Return>
+nnoremap <silent><leader>h :bpreviou<Return>
 
 nnoremap <leader>w :write<Return>
 nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
@@ -55,3 +55,4 @@ function Quit()
         bd
     endif
 endfunction
+au TextYankPost * silent! lua vim.highlight.on_yank()
