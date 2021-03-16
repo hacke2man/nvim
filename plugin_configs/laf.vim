@@ -7,7 +7,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  guibg=bg
-let g:indent_guides_exclude_filetypes = ['startify', 'vim', 'floaterm', 'help', 'no ft']
+let g:indent_guides_exclude_filetypes = ['startify', 'vim', 'floaterm', 'help', 'no ft', 'man', 'mail']
 
 let g:buftabline_indicators = 1
 
