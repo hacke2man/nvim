@@ -17,5 +17,15 @@ source ~/.config/nvim/plugin_configs/undotree.vim
 source ~/.config/nvim/plugin_configs/laf.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
 
+autocmd BufReadPost,FileReadPost *.vs setfiletype glsl
+au BufWritePost *.ms silent !groff -ms % > %.ps
+au BufWritePost *.me silent !groff -me % > %.ps
+
+" augroup remember_folds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent! loadview
+" augroup END
+
 " functions
 " source ~/.config/nvim/functions/r1ri_foldtext.vim
