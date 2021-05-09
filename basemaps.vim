@@ -54,6 +54,18 @@ nnoremap <leader>n :noh<Return>
 nnoremap <leader>q :call Quit()<Return>
 nnoremap <leader>mr :call Mun()<Return>
 nnoremap <leader>ee :edit ./**/
+nnoremap <leader>t :call Tfunc()<Return>
+
+tnoremap <c-k> <c-\><c-n>
+
+function Tfunc()
+    terminal
+    setfiletype term
+    set nonumber
+    set norelativenumber
+    set signcolumn=no
+    norm i
+endfunction
 
 function Mun()
     !make && ./a.out
@@ -64,6 +76,10 @@ function Quit()
     if (bufNum == 1)
         q
     else
-        bd
+        if (&filetype == "term")
+            bd!
+        else
+            bd
+        endif
     endif
 endfunction
