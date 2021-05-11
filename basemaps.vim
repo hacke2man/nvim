@@ -56,14 +56,13 @@ nnoremap <leader>mr :call Mun()<Return>
 nnoremap <leader>ee :edit ./**/
 nnoremap <leader>t :call Tfunc()<Return>
 
-tnoremap <c-k> <c-\><c-n>
+tnoremap <c-h> <c-\><c-n>:bprevious<return>
+tnoremap <c-l> <c-\><c-n>:bnext<return>
 
 function Tfunc()
     terminal
     setfiletype term
-    set nonumber
-    set norelativenumber
-    set signcolumn=no
+    setlocal signcolumn=no
     norm i
 endfunction
 
