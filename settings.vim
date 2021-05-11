@@ -5,7 +5,7 @@ syntax on
 set nowrap
 set relativenumber
 set nu
-set colorcolumn=+80
+set colorcolumn=80
 hi ColorColumn ctermbg=darkgray
 set scrolloff=8
 set sidescrolloff=10

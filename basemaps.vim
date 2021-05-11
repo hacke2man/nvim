@@ -56,8 +56,9 @@ nnoremap <leader>mr :call Mun()<Return>
 nnoremap <leader>ee :edit ./**/
 nnoremap <leader>t :call Tfunc()<Return>
 
-tnoremap <c-h> <c-\><c-n>:bprevious<return>
+tnoremap <c-k> <c-\><c-n>
 tnoremap <c-l> <c-\><c-n>:bnext<return>
+tnoremap <c-h> <c-\><c-n>:bprevious<return>
 
 function Tfunc()
     terminal
