@@ -55,6 +55,11 @@ nnoremap <leader>q :call Quit()<Return>
 nnoremap <leader>mr :call Mun()<Return>
 nnoremap <leader>ee :edit ./**/
 nnoremap <leader>t :call Tfunc()<Return>
+nnoremap <leader>dup :!dupe<return>
+nnoremap <leader>j jzz
+nnoremap <leader>k kzz
+nnoremap <leader><c-o> <c-o>zz
+nnoremap <leader><c-i> <c-i>zz
 
 tnoremap <c-k> <c-\><c-n>
 tnoremap <c-l> <c-\><c-n>:bnext<return>
