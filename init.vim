@@ -16,13 +16,3 @@ source ~/.config/nvim/plugin_configs/start_screen.vim
 source ~/.config/nvim/plugin_configs/undotree.vim
 source ~/.config/nvim/plugin_configs/laf.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
-
-
-" augroup remember_folds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent! loadview
-" augroup END
-
-" functions
-" source ~/.config/nvim/functions/r1ri_foldtext.vim

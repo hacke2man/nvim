@@ -43,6 +43,9 @@ nnoremap <Right> :vertical resize +2<CR>
 nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') .'k'
 nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') .'j'
 
+nnoremap ml :execute "vert sb" bufnr('%')+1<return>
+nnoremap mh :execute "vert leftabove sb" bufnr('%')-1<return>
+
 let mapleader = "\<Space>"
 nnoremap <silent><leader>l :bnext<Return>
 nnoremap <silent><leader>h :bpreviou<Return>
@@ -60,10 +63,16 @@ nnoremap <leader>j jzz
 nnoremap <leader>k kzz
 nnoremap <leader><c-o> <c-o>zz
 nnoremap <leader><c-i> <c-i>zz
-
+nnoremap <leader>r :call Run()<return>
 tnoremap <c-k> <c-\><c-n>
 tnoremap <c-l> <c-\><c-n>:bnext<return>
 tnoremap <c-h> <c-\><c-n>:bprevious<return>
+
+function Run()
+    let out=system(getline('.'))
+    norm ddk
+    put =out
+endfunction
 
 function Tfunc()
     terminal
