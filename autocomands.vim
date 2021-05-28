@@ -1,7 +1,8 @@
-au FileType man set scrolloff=999
+autocmd FileType man set scrolloff=999
+autocmd FileType man nnoremap <buffer> \ /^\s*-
 
-au BufWritePost *.ms silent !groff -ms % > %.ps
-au BufWritePost *.me silent !groff -me % > %.ps
+autocmd BufWritePost *.ms silent !groff -ms % > %.ps
+autocmd BufWritePost *.me silent !groff -me % > %.ps
 
 autocmd BufEnter * call ReadChecks()
 autocmd BufEnter *.vs setfiletype glsl
