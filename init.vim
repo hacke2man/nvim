@@ -7,12 +7,20 @@ source ~/.config/nvim/settings.vim
 source ~/.config/nvim/basemaps.vim
 source ~/.config/nvim/autocomands.vim
 
+lua require('plugins')
+
 " Plugin Configuration
-source ~/.config/nvim/plugin_configs/plugins.vim
 source ~/.config/nvim/plugin_configs/plug_adjust.vim
-source ~/.config/nvim/plugin_configs/coc.vim
 source ~/.config/nvim/plugin_configs/quickscope.vim
 source ~/.config/nvim/plugin_configs/start_screen.vim
 source ~/.config/nvim/plugin_configs/undotree.vim
 source ~/.config/nvim/plugin_configs/laf.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
+
+luafile ~/.config/nvim/lu.lua
+luafile ~/.config/nvim/compe.lua
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })

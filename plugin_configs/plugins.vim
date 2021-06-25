@@ -3,7 +3,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   "autocmd VimEnter * PlugInstall
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
+  autocmd VimEnter * PlugInstall | source $MYVIMRC/plugin_configs/plugins.vim
 endif
 
 call plug#begin()
@@ -14,11 +14,6 @@ call plug#begin()
     Plug 'terryma/vim-multiple-cursors'
     Plug 'amadeus/vim-convert-color-to'
 
-" Coc
-    Plug 'neoclide/coc.nvim'
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
-            \  'coc-snippets', 'coc-prettier', 'coc-marketplace',
-            \  'coc-gitignore', 'coc-emmet']
 
 " laf
     Plug 'gruvbox-community/gruvbox'
@@ -34,6 +29,12 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
 " movement
     Plug 'unblevable/quick-scope'
 
+" " Coc
+"     Plug 'neoclide/coc.nvim'
+" let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
+"             \  'coc-snippets', 'coc-prettier', 'coc-marketplace',
+"             \  'coc-gitignore', 'coc-emmet']
+
 " backend?
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-fugitive'
@@ -42,6 +43,8 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-vimlsp',
     Plug 'nvim-lua/popup.nvim'
     Plug 'airblade/vim-rooter'
     Plug 'tpope/vim-sleuth'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/nvim-compe'
 
 " idk intrusive stuff?
     Plug 'ThePrimeagen/vim-be-good'
@@ -60,3 +63,4 @@ autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
+
