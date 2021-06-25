@@ -1,6 +1,5 @@
 vim.o.completeopt = "menu,menuone,noselect"
-local compe = require('compe')
-compe.setup {
+require "compe".setup {
   enabled = true;
   autocomplete = true;
   debug = false;
@@ -18,6 +17,7 @@ compe.setup {
   source = {
     path = true;
     nvim_lsp = true;
+    zsh = true;
   };
 }
 

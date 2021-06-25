@@ -8,6 +8,8 @@ source ~/.config/nvim/basemaps.vim
 source ~/.config/nvim/autocomands.vim
 
 lua require('plugins')
+lua require('lsp')
+lua require('compeConf')
 
 " Plugin Configuration
 source ~/.config/nvim/plugin_configs/plug_adjust.vim
@@ -17,8 +19,6 @@ source ~/.config/nvim/plugin_configs/undotree.vim
 source ~/.config/nvim/plugin_configs/laf.vim
 source ~/.config/nvim/plugin_configs/telescope.vim
 
-luafile ~/.config/nvim/lu.lua
-luafile ~/.config/nvim/compe.lua
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')

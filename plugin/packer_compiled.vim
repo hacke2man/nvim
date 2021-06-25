@@ -72,6 +72,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["compe-zsh"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/compe-zsh"
+  },
   gruvbox = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/gruvbox"
@@ -103,6 +107,10 @@ _G.packer_plugins = {
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["packer.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,

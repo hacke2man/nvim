@@ -64,9 +64,11 @@ nnoremap <leader>k kzz
 nnoremap <leader><c-o> <c-o>zz
 nnoremap <leader><c-i> <c-i>zz
 nnoremap <leader>r :call Run()<return>
+nnoremap <silent><leader>ch :cd %:p:h<return>
 tnoremap <c-k> <c-\><c-n>
 tnoremap <c-l> <c-\><c-n>:bnext<return>
 tnoremap <c-h> <c-\><c-n>:bprevious<return>
+
 
 function Run()
     let out=system(getline('.'))

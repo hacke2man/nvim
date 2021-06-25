@@ -6,6 +6,8 @@ vim.cmd [[packadd packer.nvim]]
 -- vim._update_package_paths()
 
 return require('packer').startup(function()
+    use 'wbthomason/packer.nvim'
+
 -- editing
     use 'tpope/vim-surround'
     use 'tpope/vim-commentary'
@@ -33,9 +35,10 @@ return require('packer').startup(function()
     use 'nvim-lua/popup.nvim'
     use 'airblade/vim-rooter'
     use 'tpope/vim-sleuth'
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-compe'
+    use {'neovim/nvim-lspconfig', opt = false}
+    use {"hrsh7th/nvim-compe", opt = false}
     use 'SirVer/ultisnips'
+    use 'tamago324/compe-zsh'
 
 -- idk intrusive stuff?
     use 'ThePrimeagen/vim-be-good'
