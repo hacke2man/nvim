@@ -5,6 +5,9 @@ vim.cmd [[packadd packer.nvim]]
 -- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
 -- vim._update_package_paths()
 
+vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
+-- vim.cmd "autocmd BufWritePost plugins.lua source $VIM:|PackerSync"
+
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
@@ -17,17 +20,13 @@ return require('packer').startup(function()
 -- laf
     use 'gruvbox-community/gruvbox'
     use 'shinchu/lightline-gruvbox.vim'
-    use 'itchyny/lightline.vim'
-    use 'mhinz/vim-signify'
     use 'mhinz/vim-startify'
-    use 'sheerun/vim-polyglot'
-    use 'nathanaelkane/vim-indent-guides'
-    use 'https://github.com/vim-scripts/mom.vim'
 
--- movement
+-- Navigation
     use 'unblevable/quick-scope'
+    use 'nvim-telescope/telescope.nvim'
 
--- backend?
+-- backend
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-rhubarb'
@@ -40,14 +39,17 @@ return require('packer').startup(function()
     use 'SirVer/ultisnips'
     use 'tamago324/compe-zsh'
 
--- idk intrusive stuff?
+-- Practice
     use 'ThePrimeagen/vim-be-good'
-    use 'junegunn/gv.vim'
-    use 'nvim-telescope/telescope.nvim'
 
 -- info
     use 'norcalli/nvim-colorizer.lua'
     use 'szw/vim-dict'
     use 'ap/vim-buftabline'
+    use 'itchyny/lightline.vim'
+    use 'mhinz/vim-signify'
+    use 'sheerun/vim-polyglot'
+    use 'nathanaelkane/vim-indent-guides'
+    use 'vim-scripts/mom.vim'
 
 end)

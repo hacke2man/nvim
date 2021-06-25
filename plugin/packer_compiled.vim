@@ -80,10 +80,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
-  ["gv.vim"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/gv.vim"
-  },
   ["lightline-gruvbox.vim"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/lightline-gruvbox.vim"
@@ -143,10 +139,6 @@ _G.packer_plugins = {
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-commentary"
-  },
-  ["vim-convert-color-to"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-convert-color-to"
   },
   ["vim-dict"] = {
     loaded = true,
