@@ -48,7 +48,7 @@ return require('packer').startup(function()
     use 'ap/vim-buftabline'
     use 'itchyny/lightline.vim'
     use 'mhinz/vim-signify'
-    use 'sheerun/vim-polyglot'
+    use 'nvim-treesitter/nvim-treesitter'
     use 'nathanaelkane/vim-indent-guides'
     use 'vim-scripts/mom.vim'
 

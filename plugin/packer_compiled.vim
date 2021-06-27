@@ -104,6 +104,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-treesitter"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/packer.nvim"
@@ -140,6 +144,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
+  ["vim-convert-color-to"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-convert-color-to"
+  },
   ["vim-dict"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-dict"
@@ -155,10 +163,6 @@ _G.packer_plugins = {
   ["vim-multiple-cursors"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
-  },
-  ["vim-polyglot"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-polyglot"
   },
   ["vim-repeat"] = {
     loaded = true,
