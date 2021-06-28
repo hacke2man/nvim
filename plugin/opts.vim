@@ -69,7 +69,7 @@ tnoremap <c-k> <c-\><c-n>
 tnoremap <c-l> <c-\><c-n>:bnext<return>
 tnoremap <c-h> <c-\><c-n>:bprevious<return>
 
-
+" Functions
 function Run()
     let out=system(getline('.'))
     norm ddk
@@ -99,3 +99,27 @@ function Quit()
         endif
     endif
 endfunction
+
+function Sync()
+    let thing = $HOME
+    if filereadable(join([$HOME,".cache/nvim/update_plugins"] ,"/"))
+        PackerSync
+        call system('rm ~/.cache/nvim/update_plugins')
+    endif
+endfunction
+
+function ReadChecks()
+    if &filetype == "term"
+        normal i
+    endif
+endfunction
+
+" Auto Commads
+autocmd FileType man set scrolloff=999
+autocmd FileType man nnoremap <buffer> \ /^\s*-
+
+autocmd BufWritePost *.ms silent !groff -ms % > %.ps
+autocmd BufWritePost *.me silent !groff -me % > %.ps
+
+autocmd BufEnter * call ReadChecks()
+autocmd BufEnter *.vs setfiletype glsl

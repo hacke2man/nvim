@@ -15,10 +15,10 @@ vim.opt.shiftround = true
 -- vim.opt.shiftwidth = 4
 -- vim.opt.smarttab = true
 
--- vim.opt.clipboard = vim.opt.clipboard + "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.incsearch = true
 -- vim.opt.set foldmethod=syntax
--- vim.opt.foldlevelstart=100
+vim.opt.foldlevelstart = 100
 vim.opt.wildmenu = true
 vim.opt.wildignore = vim.opt.wildignore + "/home/liam/**/node_modules/**"
 vim.opt.wildignore = vim.opt.wildignore + "/home/liam/**/plugged/**"
@@ -56,8 +56,9 @@ vim.opt.shortmess = vim.opt.shortmess + "c"
 
 vim.opt.signcolumn = "yes"
 -- vim.opt.listchars = {trail = '~', extends = '>', precedes = '<', tab = '>-'}
+vim.opt.listchars = "trail:~,extends:>,precedes:<,tab:>-"
 vim.opt.list = true
--- vim.opt.fillchars = {fold = ' '}
+vim.opt.fillchars = "fold: "
 vim.opt.termguicolors = true
 
 -- Original file

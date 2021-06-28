@@ -1,12 +1,13 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
--- Only if your version of Neovim doesn't have https://github.com/neovim/neovim/pull/12632 merged
--- vim._update_package_paths()
+-- vim.cmd [[packadd packer.nvim]]
 
+-- vim.cmd "![ -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ] &&
+--     \ git clone https://github.com/wbthomason/packer.nvim\
+--     \ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 -- vim.cmd "autocmd BufWritePost plugins.lua source $VIM:|PackerSync"
+vim.cmd "autocmd BufWritePost plugins.lua call system('[ -f ~/.cache/nvim/update_plugins ] || touch ~/.cache/nvim/update_plugins')"
+vim.cmd "autocmd VimEnter * call Sync()"
 
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
