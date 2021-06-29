@@ -5,6 +5,7 @@
 
 lua require('plugins')
 lua require('lsp')
+lua require('snipconf')
 lua require('compeConf')
 lua require('treesitter')
 lua require('settings')
