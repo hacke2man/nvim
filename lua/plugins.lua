@@ -17,6 +17,7 @@ return require('packer').startup(function()
     use 'tpope/vim-commentary'
     use 'terryma/vim-multiple-cursors'
     use 'amadeus/vim-convert-color-to'
+    use 'norcalli/snippets.nvim'
 
 -- laf
     use 'gruvbox-community/gruvbox'
@@ -37,7 +38,6 @@ return require('packer').startup(function()
     use 'tpope/vim-sleuth'
     use {'neovim/nvim-lspconfig', opt = false}
     use {"hrsh7th/nvim-compe", opt = false}
-    use 'SirVer/ultisnips'
     use 'tamago324/compe-zsh'
 
 -- Practice

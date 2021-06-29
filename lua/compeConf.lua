@@ -1,5 +1,7 @@
 vim.o.completeopt = "menu,menuone,noselect"
-require "compe".setup {
+
+local compe = require'compe';
+compe.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
@@ -12,12 +14,16 @@ require "compe".setup {
   max_kind_width = 100;
   max_menu_width = 100;
   documentation = true;
-  snippetSupport=true;
 
   source = {
     path = true;
+    calc = true;
+    spell = true;
+    buffer = true;
     nvim_lsp = true;
+    nvim_lua = true;
     zsh = true;
+    snippets_nvim = true;
   };
 }
 
@@ -54,18 +60,21 @@ _G.s_tab_complete = function()
   end
 end
 
+_G.UltiSnipsExpand = function()
+
+  if vim.fn.pumvisible() == 1 then
+    if vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+        return vim.api.nvim_replace_termcodes("<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>", true, true, true)
+    else
+        return vim.api.nvim_replace_termcodes("<CR>", true, true, true)
+    end
+  end
+end
+
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
+vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true})
+vim.api.nvim_set_keymap("i","<C-e>", "compe#close('<C-e>')", {expr = true})

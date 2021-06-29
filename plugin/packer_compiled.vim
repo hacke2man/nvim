@@ -124,13 +124,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/quick-scope"
   },
+  ["snippets.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/snippets.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/telescope.nvim"
-  },
-  ultisnips = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/ultisnips"
   },
   ["vim-be-good"] = {
     loaded = true,
