@@ -54,7 +54,8 @@ let g:startify_lists = [
           \ { 'type': 'commands',  'header': ['   Commands']       },
           \ ]
 
-nnoremap <silent><leader>sc :SClose<Return>
+nnoremap <silent><c-s> <c-w><c-o>:bd<Return>:Startify<Return>
+
 " telescope config
 
 nnoremap <silent><leader>ef :Telescope find_files theme=get_dropdown<Return>

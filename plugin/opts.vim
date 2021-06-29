@@ -90,7 +90,7 @@ endfunction
 function Quit()
     let bufNum=len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
     if (bufNum == 1)
-        q
+       q
     else
         if (&filetype == "term")
             bd!
