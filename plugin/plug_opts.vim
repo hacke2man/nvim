@@ -44,17 +44,17 @@ augroup qs_colors
   autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
   autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 augroup END
-let g:startify_fortune_use_unicode = 1
-let g:startify_change_to_dir = 0
-let g:startify_lists = [
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ { 'type': 'files',     'header': ['   MRU']            },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-          \ ]
+" let g:startify_fortune_use_unicode = 1
+" let g:startify_change_to_dir = 0
+" let g:startify_lists = [
+"           \ { 'type': 'sessions',  'header': ['   Sessions']       },
+"           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+"           \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+"           \ { 'type': 'files',     'header': ['   MRU']            },
+"           \ { 'type': 'commands',  'header': ['   Commands']       },
+"           \ ]
 
-nnoremap <silent><c-s> <c-w><c-o>:bd<Return>:Startify<Return>
+" nnoremap <silent><c-s> <c-w><c-o>:bd<Return>:Startify<Return>
 
 " telescope config
 

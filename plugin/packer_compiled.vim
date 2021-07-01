@@ -76,6 +76,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/compe-zsh"
   },
+  ["dashboard-nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
+  },
   gruvbox = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/gruvbox"
@@ -183,10 +187,6 @@ _G.packer_plugins = {
   ["vim-sleuth"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-sleuth"
-  },
-  ["vim-startify"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-startify"
   },
   ["vim-surround"] = {
     loaded = true,

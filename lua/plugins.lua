@@ -22,7 +22,8 @@ return require('packer').startup(function()
 -- laf
     use 'gruvbox-community/gruvbox'
     use 'shinchu/lightline-gruvbox.vim'
-    use 'mhinz/vim-startify'
+    -- use 'mhinz/vim-startify'
+    use 'glepnir/dashboard-nvim'
 
 -- Navigation
     use 'unblevable/quick-scope'
