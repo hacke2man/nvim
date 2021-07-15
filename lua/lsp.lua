@@ -45,7 +45,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "clangd", "vimls", "rust_analyzer" }
+local servers = { "clangd", "vimls", "gopls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -54,4 +54,11 @@ for _, lsp in ipairs(servers) do
        debounce_text_changes = 500,
     };
   }
+end
+
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
 end

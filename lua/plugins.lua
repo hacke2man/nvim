@@ -17,7 +17,9 @@ return require('packer').startup(function()
     use 'tpope/vim-commentary'
     use 'terryma/vim-multiple-cursors'
     use 'amadeus/vim-convert-color-to'
-    use 'norcalli/snippets.nvim'
+    -- use 'norcalli/snippets.nvim'
+    use 'SirVer/ultisnips'
+    use 'windwp/nvim-autopairs'
 
 -- laf
     use 'gruvbox-community/gruvbox'
@@ -40,6 +42,10 @@ return require('packer').startup(function()
     use {'neovim/nvim-lspconfig', opt = false}
     use {"hrsh7th/nvim-compe", opt = false}
     use 'tamago324/compe-zsh'
+    use 'kabouzeid/nvim-lspinstall'
+    use 'mfussenegger/nvim-dap'
+    use 'moll/vim-bbye'
+    use 'aymericbeaumet/vim-symlink'
 
 -- Practice
     use 'ThePrimeagen/vim-be-good'

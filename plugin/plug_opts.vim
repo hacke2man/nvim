@@ -78,3 +78,8 @@ nnoremap <Leader>un :UndotreeToggle<Return>:
 let g:victionary#map_defaults = 0
 
 nnoremap <Leader>dic <Plug>(victionary#define_under_cursor)
+
+function AuPair()
+  lua reqire 'nvim-autopairs'.autopairs_cr()
+endfunction
+

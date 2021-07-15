@@ -3,7 +3,7 @@
 it got
 * and a bunch of maps
 * telescope
-* compe
-* treesitter
+* coc
+* polyglot
 
 MIT [license](./LICENSE)

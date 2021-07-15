@@ -11,10 +11,7 @@ endfunc
 
 " abbrev
 cnoreabbrev soi source ~/.config/nvim/init.vim
-cnoreabbrev run !./a.out
 cnoreabbrev ein e ~/.config/nvim/init.vim
-cnoreabbrev e. e ./
-cnoreabbrev ee e ./**/<c-r>=Eatchar('\s')<Return>
 
 " Y now yanks to the end of the line
 nnoremap Y y$
@@ -56,7 +53,7 @@ nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>n :noh<Return>
 nnoremap <leader>q :call Quit()<Return>
 nnoremap <leader>mr :call Mun()<Return>
-nnoremap <leader>ee :edit ./**/
+nnoremap <leader>e :e 
 nnoremap <leader>t :call Tfunc()<Return>
 nnoremap <leader>dup :!dupe<return>
 nnoremap <leader>j jzz
@@ -70,9 +67,26 @@ tnoremap <c-l> <c-\><c-n>:bnext<return>
 tnoremap <c-h> <c-\><c-n>:bprevious<return>
 
 " Functions
+command -nargs=1 Rename :call RenameFile(<f-args>)
+command -nargs=1 R :call RenameFile(<f-args>)
+function RenameFile(var)
+   let str=a:var
+   let path=expand("%:p")
+   let fold=expand("%:p:h")
+   let check=system("[ -f " . path ." ] || echo -n false")
+
+   if check == "false"
+      call system("touch " . path)
+   endif
+
+   echo system("mv " . path . " " . fold . "/" . str)
+   bd
+   call nvim_command("edit" . fold . "/" . str)
+endfunction
+
 function Run()
     let out=system(getline('.'))
-    norm ddk
+    norm dd
     put =out
 endfunction
 

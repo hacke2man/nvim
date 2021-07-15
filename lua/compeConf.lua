@@ -23,7 +23,8 @@ compe.setup {
     nvim_lsp = true;
     nvim_lua = true;
     zsh = true;
-    snippets_nvim = true;
+    -- snippets_nvim = true;
+    ultisnips = true;
   };
 }
 
