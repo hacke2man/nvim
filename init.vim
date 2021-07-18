@@ -14,6 +14,7 @@ lua require('autopairs')
 lua require('dapConf')
 
 command Soi source ~/.config/nvim/init.*
+command P echo expand("%:p")
 
 let g:dashboard_custom_section={
 	\ 'a': {
