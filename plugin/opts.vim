@@ -48,8 +48,6 @@ nnoremap <silent><leader>l :bnext<Return>
 nnoremap <silent><leader>h :bpreviou<Return>
 
 nnoremap <leader>w :write<Return>
-nnoremap <leader>sr :%s/\v<c-r>=expand("<cword>")<Return>/
-nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>n :noh<Return>
 nnoremap <leader>q :call Quit()<Return>
 nnoremap <leader>mr :call Mun()<Return>

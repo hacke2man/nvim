@@ -7,6 +7,7 @@
 " allow coc to use tab for expantion
 let g:UltiSnipsExpandTrigger='<C-e>'
 
+nnoremap <leader>dic :Dict <c-r>=expand("<cword>")<Return><Return>
 nnoremap <leader>cc :ConvertColorto 
 "colorscheme plug
 colorscheme gruvbox
@@ -34,8 +35,8 @@ let g:lightline = {
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
-highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline
-highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline
+highlight QuickScopePrimary guifg='#d3869b' gui=underline ctermfg=34 cterm=underline
+highlight QuickScopeSecondary guifg='#fabd2f' gui=underline ctermfg=81 cterm=underline
 
 let g:qs_max_chars=150
 
@@ -55,15 +56,25 @@ augroup END
 "           \ ]
 
 " nnoremap <silent><c-s> <c-w><c-o>:bd<Return>:Startify<Return>
+let g:dashboard_custom_section={
+	\ 'a': {
+		\ 'description': ['find file'],
+		\ 'command': "Telescope find_files theme=get_dropdown" },
+	\ 'b': {
+		\ 'description': ['init'],
+		\ 'command': "edit ~/.config/nvim/init.vim" },
+	\ 'c': {
+		\ 'description': ['quit'],
+		\ 'command': "qa" },
+	\ }
 
 " telescope config
-
-nnoremap <silent><leader>ef :Telescope find_files theme=get_dropdown<Return>
-nnoremap <silent><leader>EF :call FullFind()<return>
-nnoremap <silent><leader>fb :Telescope buffers theme=get_dropdown<Return><esc>
-nnoremap <silent><leader>fg :Telescope git_status theme=get_dropdown<Return>
-nnoremap <silent><leader>fs :Telescope live_grep theme=get_dropdown<Return>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <silent><leader>f :Telescope find_files theme=get_dropdown<Return>
+" nnoremap <silent><leader>EF :call FullFind()<return>
+" nnoremap <silent><leader>fb :Telescope buffers theme=get_dropdown<Return><esc>
+" nnoremap <silent><leader>fg :Telescope git_status theme=get_dropdown<Return>
+nnoremap <silent><leader>s :Telescope live_grep theme=get_dropdown<Return>
+" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 function FullFind()
   cd $HOME
