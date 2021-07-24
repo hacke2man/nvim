@@ -3,7 +3,7 @@ vim.opt.wrap = false
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.colorcolumn = "80"
--- vim.opt.ColorColumn ctermbg=darkgray
+vim.opt.showmode = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 10
 vim.opt.signcolumn = "yes"
@@ -12,17 +12,16 @@ vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank()")
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.shiftround = true
--- vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 4
 -- vim.opt.smarttab = true
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.incsearch = true
--- vim.opt.set foldmethod=syntax
+vim.opt.foldmethod = "syntax"
 vim.opt.foldlevelstart = 100
 vim.opt.wildmenu = true
 vim.opt.wildignore = vim.opt.wildignore + "/home/liam/**/node_modules/**"
 vim.opt.wildignore = vim.opt.wildignore + "/home/liam/**/plugged/**"
--- vim.opt.matchpairs = vim.opt.wildignore + ':'
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -32,10 +31,6 @@ vim.opt.visualbell = true
 vim.opt.cursorline = true
 vim.opt.undofile = true
 vim.opt.undodir = "/home/liam/.cache/vimundo"
--- " complete
--- " completeopt
--- " fileformats
--- " guifont, guifontset
 
 -- TextEdit might fail if hidden is not set.
 vim.opt.hidden = true
@@ -61,76 +56,62 @@ vim.opt.list = true
 vim.opt.fillchars = "fold: "
 vim.opt.termguicolors = true
 
--- Original file
--- " Nvim settings
+-- base nvim mappings
+vim.cmd[[nnoremap Q <nop>]]
 
--- " filetype plugin on
--- " syntax on
--- set nowrap
--- set relativenumber
--- set nu
--- set colorcolumn=80
--- hi ColorColumn ctermbg=darkgray
--- set scrolloff=8
--- set sidescrolloff=10
--- set signcolumn=yes
--- au TextYankPost * silent! lua vim.highlight.on_yank()
+-- unmaps
+vim.cmd[[command Ein edit $HOME/.config/nvim/init.lua]]
+vim.cmd[[command Soi source ~/.config/nvim/init.lua]]
+vim.cmd[[command P echo expand("%:p")]]
 
--- set autoindent
--- set expandtab
--- set shiftround
--- set shiftwidth=4
--- set smarttab
+-- Y now yanks to the end of the line
+vim.cmd[[nnoremap Y y$]]
+-- yank entire file file.
+vim.cmd[[nnoremap yaa :%y<Return>]]
+vim.cmd[[nnoremap daa :%d<Return>]]
 
--- set clipboard+=unnamedplus
--- set incsearch
--- " set foldmethod=syntax
--- set foldlevelstart=100
--- set wildmenu
--- set wildignore+=/home/liam/**/node_modules/**
--- set wildignore+=/home/liam/**/plugged/**
--- set matchpairs+=':'
+-- V selects to the end of a end
+vim.cmd[[nnoremap V v$]]
+-- vv selects linewise NOTE: vV also still works
+vim.cmd[[xnoremap v <esc>0v$]]
+-- P in escence does not copy overwritten selection
+vim.cmd[[xnoremap P pgvy]]
 
--- set splitbelow
--- set splitright
+-- Better window navigation
+vim.cmd[[nnoremap <C-h> <C-w>h]]
+vim.cmd[[nnoremap <C-j> <C-w>j]]
+vim.cmd[[nnoremap <C-k> <C-w>k]]
+vim.cmd[[nnoremap <C-l> <C-w>l]]
 
--- set noswapfile
--- set visualbell
--- set cursorline
--- set undofile
--- set undodir=/home/liam/.cache/vimundo
--- " complete
--- " completeopt
--- " fileformats
--- " guifont, guifontset
+vim.cmd[[nnoremap <Up>    :resize -2<CR>]]
+vim.cmd[[nnoremap <Down>  :resize +2<CR>]]
+vim.cmd[[nnoremap <Left>  :vertical resize -2<CR>]]
+vim.cmd[[nnoremap <Right> :vertical resize +2<CR>]]
 
--- " TextEdit might fail if hidden is not set.
--- set hidden
+-- A j or k movement with a count greater than 1 is now counted as a jump
+vim.cmd[[nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') .'k']]
+vim.cmd[[nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') .'j']]
 
--- " Some servers have issues with backup files, see #649.
--- set nobackup
--- set nowritebackup
+vim.cmd[[nnoremap ml :execute "vert sb" bufnr('%')+1<return>]]
+vim.cmd[[nnoremap mh :execute "vert leftabove sb" bufnr('%')-1<return>]]
 
--- " Give more space for displaying messages.
--- set cmdheight=2
+vim.cmd[[let mapleader = "\<Space>"]]
+vim.cmd[[nnoremap <silent><leader>l :bnext<Return>]]
+vim.cmd[[nnoremap <silent><leader>h :bprevious<Return>]]
 
--- " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
--- " delays and poor user experience.
--- set updatetime=300
+vim.cmd[[nnoremap <leader><return> :<up><return>]]
+vim.cmd[[nnoremap <leader>w :write<Return>]]
+vim.cmd[[nnoremap <leader>n :noh<Return>]]
+vim.cmd[[nnoremap <leader>q :call Quit()<Return>]]
+vim.cmd[[nnoremap <leader>e :e ]]
+vim.cmd[[nnoremap <leader>dup :!dupe<return>]]
+vim.cmd[[nnoremap <leader>j jzz]]
+vim.cmd[[nnoremap <leader>k kzz]]
+vim.cmd[[nnoremap <leader><c-o> <c-o>zz]]
+vim.cmd[[nnoremap <leader><c-i> <c-i>zz]]
+vim.cmd[[nnoremap <silent><leader>ch :cd %:p:h<return>]]
+vim.cmd[[tnoremap <c-k> <c-\><c-n>]]
+vim.cmd[[tnoremap <c-l> <c-\><c-n>:bnext<return>]]
+vim.cmd[[tnoremap <c-h> <c-\><c-n>:bprevious<return>]]
 
--- " Don't pass messages to |ins-completion-menu|.
--- set shortmess+=c
-
--- " Always show the signcolumn, otherwise it would shift the text each time
--- " diagnostics appear/become resolved.
--- if has("patch-8.1.1564")
---   " Recently vim can merge signcolumn and number column into one
---   set signcolumn=number
--- else
---   set signcolumn=yes
--- endif
-
--- set listchars=trail:~,extends:>,precedes:<,tab:>-
--- set list
--- set fillchars=fold:\ 
--- set termguicolors
+vim.cmd[[inoremap <c-a> <esc>A]]

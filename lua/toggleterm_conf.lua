@@ -1,3 +1,10 @@
+vim.api.nvim_set_keymap(
+  'n',
+  '<space>t',
+  ':ToggleTerm<Return>',
+  { noremap=true, silent=true }
+)
+
 require("toggleterm").setup {
   -- size can be a number or function which is passed the current terminal
   size = function(term)

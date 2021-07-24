@@ -43,21 +43,23 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
--- To get builtin LSP running, do something like:
--- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- Include globals you want to tell the LSP are real :)
-  globals = {
-    -- Colorbuddy
-    "Color", "c", "Group", "g", "s",
+-- map buffer local keybindings when the language server attaches
+--[[ local servers = { "clangd" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    compatibilities = compatibilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    require "lsp_signature".on_attach(),
   }
-})
+end ]]
 
 require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
+-- vim.api.cmd("echo \"" .. servers[1] .. ""\"")
 for _, server in pairs(servers) do
   require'lspconfig'[server].setup{
     on_attach = on_attach,

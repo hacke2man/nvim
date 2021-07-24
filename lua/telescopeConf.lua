@@ -1,9 +1,24 @@
+vim.api.nvim_set_keymap(
+  'n',
+  '<space>f',
+  ':Telescope find_files theme=get_ivy<Return>',
+  {noremap = true, silent = true}
+)
+
+vim.api.nvim_set_keymap(
+  'n',
+  '<space>s',
+  ':Telescope live_grep theme=get_ivy<Return>',
+  {noremap = true, silent = true}
+)
+
 require('telescope').setup{
   defaults = {
     vimgrep_arguments = {
       'rg',
-      '--git-ignore=$HOME/.gitignore',
-      '--hidden',
+      -- '--hidden',
+      '--ignore-file=/liam/home/.gitignore',
+      '--one-file-system',
       '--color=never',
       '--no-heading',
       '--with-filename',
@@ -42,13 +57,5 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-  },
-  extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true,
-    }
   }
 }
-
-require('telescope').load_extension('fzy_native')
