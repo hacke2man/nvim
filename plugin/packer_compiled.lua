@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["cheatsheet.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/cheatsheet.nvim"
+  },
   ["compe-zsh"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/compe-zsh"
@@ -77,21 +81,43 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/dashboard-nvim"
   },
+  ["galaxyline.nvim"] = {
+    config = { "\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18my_statusline\frequire\0" },
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
+  ["gitsigns.nvim"] = {
+    config = { "\27LJ\1\0026\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\rgitsigns\frequire\0" },
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
   gruvbox = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/gruvbox"
   },
-  ["lightline-gruvbox.vim"] = {
+  ["indent-guides.nvim"] = {
     loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/lightline-gruvbox.vim"
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/indent-guides.nvim"
   },
-  ["lightline.vim"] = {
+  kommentary = {
     loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/lightline.vim"
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
+  ["lsp_signature.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/lsp_signature.nvim"
+  },
+  ["luatab.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/luatab.nvim"
   },
   ["mom.vim"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/mom.vim"
+  },
+  ["nlua.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -117,9 +143,30 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
+  ["nvim-lsputils"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-lsputils"
+  },
+  ["nvim-revJ.lua"] = {
+    config = { "\27LJ\1\2\0\0\3\0\6\0\t4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\1>\0\2\1G\0\1\0\fkeymaps\1\0\0\1\0\3\vvisual\14<Leader>j\roperator\14<Leader>J\tline\14<Leader>j\nsetup\trevj\frequire\0" },
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-revJ.lua"
+  },
+  ["nvim-toggleterm.lua"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-toggleterm.lua"
+  },
+  ["nvim-tree.lua"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -129,6 +176,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
+  popfix = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/popfix"
+  },
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/popup.nvim"
@@ -137,13 +188,22 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/quick-scope"
   },
+  ["registers.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/registers.nvim"
+  },
+  ["sql.nvim"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/sql.nvim"
+  },
+  ["telescope-frecency.nvim"] = {
+    config = { "\27LJ\1\2M\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\rfrecency\19load_extension\14telescope\frequire\0" },
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/telescope-frecency.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/telescope.nvim"
-  },
-  ultisnips = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/ultisnips"
   },
   ["vim-bbye"] = {
     loaded = true,
@@ -152,14 +212,6 @@ _G.packer_plugins = {
   ["vim-be-good"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-be-good"
-  },
-  ["vim-buftabline"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-buftabline"
-  },
-  ["vim-commentary"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-convert-color-to"] = {
     loaded = true,
@@ -173,14 +225,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-fugitive"
   },
-  ["vim-indent-guides"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-indent-guides"
-  },
-  ["vim-multiple-cursors"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-multiple-cursors"
-  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-repeat"
@@ -193,10 +237,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-rooter"
   },
-  ["vim-signify"] = {
-    loaded = true,
-    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-signify"
-  },
   ["vim-sleuth"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-sleuth"
@@ -208,10 +248,38 @@ _G.packer_plugins = {
   ["vim-symlink"] = {
     loaded = true,
     path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-symlink"
+  },
+  ["vim-textobj-parameter"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-textobj-parameter"
+  },
+  ["vim-textobj-user"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-textobj-user"
+  },
+  ["vim-vsnip"] = {
+    loaded = true,
+    path = "/home/liam/.local/share/nvim/site/pack/packer/start/vim-vsnip"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: galaxyline.nvim
+time([[Config for galaxyline.nvim]], true)
+try_loadstring("\27LJ\1\2-\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\18my_statusline\frequire\0", "config", "galaxyline.nvim")
+time([[Config for galaxyline.nvim]], false)
+-- Config for: telescope-frecency.nvim
+time([[Config for telescope-frecency.nvim]], true)
+try_loadstring("\27LJ\1\2M\0\0\2\0\4\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0%\1\3\0>\0\2\1G\0\1\0\rfrecency\19load_extension\14telescope\frequire\0", "config", "telescope-frecency.nvim")
+time([[Config for telescope-frecency.nvim]], false)
+-- Config for: gitsigns.nvim
+time([[Config for gitsigns.nvim]], true)
+try_loadstring("\27LJ\1\0026\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\rgitsigns\frequire\0", "config", "gitsigns.nvim")
+time([[Config for gitsigns.nvim]], false)
+-- Config for: nvim-revJ.lua
+time([[Config for nvim-revJ.lua]], true)
+try_loadstring("\27LJ\1\2\0\0\3\0\6\0\t4\0\0\0%\1\1\0>\0\2\0027\0\2\0003\1\4\0003\2\3\0:\2\5\1>\0\2\1G\0\1\0\fkeymaps\1\0\0\1\0\3\vvisual\14<Leader>j\roperator\14<Leader>J\tline\14<Leader>j\nsetup\trevj\frequire\0", "config", "nvim-revJ.lua")
+time([[Config for nvim-revJ.lua]], false)
 if should_profile then save_profiles() end
 
 end)

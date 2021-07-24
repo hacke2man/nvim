@@ -29,7 +29,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 end
 
@@ -43,22 +43,28 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   }
 }
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { "clangd", "vimls", "gopls" }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-       debounce_text_changes = 500,
-    };
+-- To get builtin LSP running, do something like:
+-- NOTE: This replaces the calls where you would have before done `require('nvim_lsp').sumneko_lua.setup()`
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  -- Include globals you want to tell the LSP are real :)
+  globals = {
+    -- Colorbuddy
+    "Color", "c", "Group", "g", "s",
   }
-end
+})
 
 require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
 for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{}
+  require'lspconfig'[server].setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+    flags = {
+       debounce_text_changes = 500,
+    },
+    require "lsp_signature".on_attach(),
+  }
 end
