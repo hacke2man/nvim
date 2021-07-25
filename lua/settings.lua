@@ -40,7 +40,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 
 -- Give more space for displaying messages.
-vim.opt.cmdheight = 2
+vim.opt.cmdheight = 1
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
@@ -49,11 +49,12 @@ vim.opt.updatetime = 300
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess = vim.opt.shortmess + "c"
 
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "number"
 -- vim.opt.listchars = {trail = '~', extends = '>', precedes = '<', tab = '>-'}
-vim.opt.listchars = "trail:~,extends:>,precedes:<,tab:>-"
+vim.opt.listchars = "trail:·,extends:>,precedes:<,tab:>-"
 vim.opt.list = true
-vim.opt.fillchars = "fold: "
+vim.opt.fillchars = "fold: ,vert:█"
+-- vim.cmd[[hi VertSplit guifg='#cc241d']]
 vim.opt.termguicolors = true
 
 -- base nvim mappings
@@ -96,8 +97,8 @@ vim.cmd[[nnoremap ml :execute "vert sb" bufnr('%')+1<return>]]
 vim.cmd[[nnoremap mh :execute "vert leftabove sb" bufnr('%')-1<return>]]
 
 vim.cmd[[let mapleader = "\<Space>"]]
-vim.cmd[[nnoremap <silent><leader>l :bnext<Return>]]
-vim.cmd[[nnoremap <silent><leader>h :bprevious<Return>]]
+-- vim.cmd[[nnoremap <silent><leader>l :bnext<Return>]]
+-- vim.cmd[[nnoremap <silent><leader>h :bprevious<Return>]]
 
 vim.cmd[[nnoremap <leader><return> :<up><return>]]
 vim.cmd[[nnoremap <leader>w :write<Return>]]
@@ -115,3 +116,28 @@ vim.cmd[[tnoremap <c-l> <c-\><c-n>:bnext<return>]]
 vim.cmd[[tnoremap <c-h> <c-\><c-n>:bprevious<return>]]
 
 vim.cmd[[inoremap <c-a> <esc>A]]
+
+local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end
