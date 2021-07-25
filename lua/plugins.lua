@@ -2,7 +2,7 @@
 -- vim.cmd [[packadd packer.nvim]]
 
 -- vim.cmd "![ -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ] && git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
--- vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
+vim.cmd "autocmd BufWritePost plugins.lua PackerCompile" -- Auto compile when there are changes in plugins.lua
 -- vim.cmd "autocmd BufWritePost plugins.lua source $VIM:|PackerSync"
 -- vim.cmd "autocmd BufWritePost plugins.lua call system('[ -f ~/.cache/nvim/update_plugins ] || touch ~/.cache/nvim/update_plugins')"
 -- vim.cmd "autocmd VimEnter * call Sync()"
@@ -15,7 +15,9 @@ return require('packer').startup(function()
     use 'b3nj5m1n/kommentary'
     use {
         'amadeus/vim-convert-color-to',
-        config=vim.api.nvim_set_keymap('n', '<space>cc', ':ConvertColorTo ', {noremap = true})
+        config=function()
+            vim.api.nvim_set_keymap('n', '<space>cc', ':ConvertColorTo ', {noremap = true})
+        end
     }
     use 'hrsh7th/vim-vsnip'
     use {
@@ -23,7 +25,7 @@ return require('packer').startup(function()
         config = function ()
             require'autopairs'
             vim.cmd[[
-            function AuPair()
+            function! AuPair()
             lua reqire 'nvim-autopairs'.autopairs_cr()
             endfunction
             ]]
@@ -32,41 +34,41 @@ return require('packer').startup(function()
     use {
         'AckslD/nvim-revJ.lua',
         requires = {'kana/vim-textobj-user', 'sgur/vim-textobj-parameter'},
-        config = require("revj").setup{
-            keymaps = {
-                operator = '<Leader>J', -- for operator (+motion)
-                line = '<Leader>j', -- for formatting current line
-                visual = '<Leader>j', -- for formatting visual selection
-            },
-        }
-    }
-
--- laf
-    use {
-        'gruvbox-community/gruvbox',
-        config=vim.cmd "colorscheme gruvbox"
-    }
-
-    use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- your statusline
-        config = require'my_statusline',
-        -- some optional icons
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
-    }
-
-    use {
-        'glepnir/dashboard-nvim',
         config = function ()
-            vim.cmd[[au filetype dashboard nnoremap <buffer>q ZZ]]
-            vim.cmd[[au filetype dashboard nnoremap <buffer><leader>q ZZ]]
-            vim.cmd[[ autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2 ]]
+            require("revj").setup{
+                keymaps = {
+                    operator = '<Leader>J', -- for operator (+motion)
+                    line = '<Leader>j', -- for formatting current line
+                    visual = '<Leader>j', -- for formatting visual selection
+                }
+            }
         end
     }
 
-    use { 'alvarosevilla95/luatab.nvim',
-        requires='kyazdani42/nvim-web-devicons',
+-- laf
+    use { "rktjmp/lush.nvim" }
+    use {
+        '~/dev/gruv',
+         config = function ()
+            vim.cmd[[colorscheme gruv]]
+         end
+  }
+
+  use {
+    'tjdevries/express_line.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = function ()
+      require'el_conf'
+    end
+  }
+
+  use {
+    'romgrk/barbar.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        config = function ()
+            vim.api.nvim_set_keymap('n', '<space>l', ':BufferNext<cr>', { noremap = true, silent = true})
+            vim.api.nvim_set_keymap('n', '<space>h', ':BufferPrevious<cr>', { noremap = true, silent = true})
+        end
     }
 
 -- Navigation
@@ -95,11 +97,15 @@ return require('packer').startup(function()
     }
 
     use { 'nvim-telescope/telescope.nvim',
-        config=require'telescopeConf',
+        config=function ()
+        require'telescopeConf'
+        end
     }
 
     use { 'glepnir/lspsaga.nvim',
-        config = require'lspsaga'.init_lsp_saga()
+        config =function()
+            require'lspsaga'.init_lsp_saga()
+        end
     }
 
 -- backend
@@ -112,58 +118,79 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         opt = false,
-        config = require'lsp'
+        config =function ()
+            require'lsp'
+        end
     }
     use {
         "hrsh7th/nvim-compe",
         opt = false,
-        config = require'compeConf'
+        config =function ()
+            require'compeConf'
+        end
     }
     use 'tamago324/compe-zsh'
     use {
         'mfussenegger/nvim-dap',
-        config = require'dapConf'
+        config =function ()
+            require'dapConf'
+        end
     }
     use 'aymericbeaumet/vim-symlink'
     use {
         'RishabhRD/nvim-lsputils',
-        config = require'lsputil_conf',
+        config =function ()
+            require'lsputil_conf'
+        end
     }
     use 'RishabhRD/popfix'
     use 'tjdevries/nlua.nvim'
 
 -- info
     use {
-        'haringsrob/nvim_context_vt',
-        config = require('nvim_context_vt').setup()
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     }
+  end
+}
     use 'kyazdani42/nvim-tree.lua'
     use 'norcalli/nvim-colorizer.lua'
     use { 'szw/vim-dict',
-        config =
+        config = function ()
         vim.api.nvim_set_keymap(
             'n',
             '<space>dic',
             ':Dict <c-r>=expand("<cword>")<Return><Return>',
             {noremap=true}
         )
+        end
     }
     use { 'lewis6991/gitsigns.nvim',
         requires = {
             'nvim-lua/plenary.nvim'
         },
-        config = require('gitsigns').setup()
+        config =function ()
+            require'gitsigns_conf'
+        end
     }
+
     use { 'nvim-treesitter/nvim-treesitter',
-        config = require'treesitter'
+        config =function ()
+            require'treesitter'
+        end
     }
-    use { 'glepnir/indent-guides.nvim',
-        config = require'indent_guides_conf'
-    }
+    use { 'lukas-reineke/indent-blankline.nvim' }
     use 'vim-scripts/mom.vim'
     use 'tversteeg/registers.nvim'
     use { 'ray-x/lsp_signature.nvim',
-        config = require'signature_conf',
+        config =function ()
+            require'signature_conf'
+        end
     }
     use { 'sudormrfbin/cheatsheet.nvim',
       requires = {
@@ -174,10 +201,24 @@ return require('packer').startup(function()
     }
 
 -- other
-    use 'ThePrimeagen/vim-be-good'
-    use { 'akinsho/nvim-toggleterm.lua',
-        config = require'toggleterm_conf',
-    }
-
+  use 'ThePrimeagen/vim-be-good'
+  use { 'akinsho/nvim-toggleterm.lua',
+    config =function ()
+      require'toggleterm_conf'
+    end
+  }
+  use {
+    'TimUntersberger/neogit',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim'
+    },
+    config = function ()
+      require'neogit_conf'
+    end
+  }
+  use 'sindrets/diffview.nvim'
+  use 'nvim-treesitter/playground'
 
 end)
+
