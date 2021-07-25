@@ -44,18 +44,12 @@ endfunction
 autocmd FileType man setlocal scrolloff=999
 autocmd FileType man nnoremap <buffer> \ /^\s*-
 
-let g:dashboard_custom_section={
-         \ 'a': {
-         \ 'description': ['Frecency'],
-         \ 'command': "Telescope frecency theme=get_ivy" },
-         \ 'b': {
-         \ 'description': ['find file'],
-         \ 'command': "Telescope find_files theme=get_ivy" },
-         \ 'c': {
-         \ 'description': ['init'],
-         \ 'command': "edit ~/.config/nvim/init.lua" },
-         \ }
-
 " Trigger a highlight in the appropriate direction when pressing these keys:
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
+" au VimEnter * call Enterfunc()
+" function Enterfunc()
+"    if &filetype == '' && isdirectory('.git')
+"       Neogit
+"    endif
+" endfunction
