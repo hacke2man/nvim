@@ -1,4 +1,6 @@
 " Functions
+omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
+vnoremap <silent> m :lua require('tsht').nodes()<CR>
 command -nargs=1 Rename :call RenameFile(<f-args>)
 command -nargs=1 R :call RenameFile(<f-args>)
 

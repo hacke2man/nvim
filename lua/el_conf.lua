@@ -61,7 +61,6 @@ local lspwarn = function (_window, buffer)
   end
 end
 
-
 require('el').setup {
   -- An example generator can be seen in `Setup`.
   -- A default one is supplied if you do not want to customize it.
@@ -146,7 +145,7 @@ function mysplit (inputstr, sep)
 end
 
 function get_git_changes ( num )
-  local handle = io.popen("git diff --shortstat")
+  local handle = io.popen("git diff --shortstat 2>/dev/null")
   local result = handle:read("*a")
 
   if (result == nil or result == '') then

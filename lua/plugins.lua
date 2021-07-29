@@ -146,38 +146,41 @@ return require('packer').startup(function()
     use 'RishabhRD/popfix'
     use 'tjdevries/nlua.nvim'
 
--- info
-    use {
-  "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
-    use 'kyazdani42/nvim-tree.lua'
-    use 'norcalli/nvim-colorizer.lua'
-    use { 'szw/vim-dict',
-        config = function ()
-        vim.api.nvim_set_keymap(
-            'n',
-            '<space>dic',
-            ':Dict <c-r>=expand("<cword>")<Return><Return>',
-            {noremap=true}
-        )
-        end
-    }
-    use { 'lewis6991/gitsigns.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim'
-        },
-        config =function ()
-            require'gitsigns_conf'
-        end
-    }
+  -- info
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use 'kyazdani42/nvim-tree.lua'
+  use 'norcalli/nvim-colorizer.lua'
+  use { 'szw/vim-dict',
+    config = function ()
+      vim.api.nvim_set_keymap(
+        'n',
+        '<space>dic',
+        ':Dict <c-r>=expand("<cword>")<Return><Return>',
+        {noremap=true}
+      )
+    end
+  }
+  use { 'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config =function ()
+      require'gitsigns_conf'
+    end
+  }
 
     use { 'nvim-treesitter/nvim-treesitter',
         config =function ()
