@@ -48,9 +48,10 @@ return require('packer').startup(function()
 -- laf
     use { "rktjmp/lush.nvim" }
     use {
-        '~/dev/gruv',
+	    "npxbr/gruvbox.nvim",
+        --'~/dev/gruv',
          config = function ()
-            vim.cmd[[colorscheme gruv]]
+            vim.cmd[[colorscheme gruvbox]]
          end
   }
 
