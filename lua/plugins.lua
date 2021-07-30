@@ -47,11 +47,12 @@ return require('packer').startup(function()
 
 -- laf
     use { "rktjmp/lush.nvim" }
+
+        -- "npxbr/gruvbox.nvim",
     use {
-	    "npxbr/gruvbox.nvim",
-        --'~/dev/gruv',
+        '~/dev/gruv',
          config = function ()
-            vim.cmd[[colorscheme gruvbox]]
+            vim.cmd[[colorscheme gruv]]
          end
   }
 
@@ -148,9 +149,7 @@ return require('packer').startup(function()
     use 'tjdevries/nlua.nvim'
 
   -- info
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-  }
+  use { 'nvim-treesitter/nvim-treesitter-textobjects' }
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -185,7 +184,7 @@ return require('packer').startup(function()
 
     use { 'nvim-treesitter/nvim-treesitter',
         config =function ()
-            require'treesitter'
+            require'nvim-treesitter.configs'.setup(require'treesitter')
         end
     }
     use { 'lukas-reineke/indent-blankline.nvim' }

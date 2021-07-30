@@ -17,16 +17,18 @@ local configs = {
         -- You can use the capture groups defined in textobjects.scm
         ["af"] = "@function.outer",
         ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+        ["ac"] = "@call.outer",
+        ["ic"] = "@call.inner",
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
 
         -- Or you can define your own textobjects like this
-        ["iF"] = {
+        --[[ ["iF"] = {
           python = "(function_definition) @function",
           cpp = "(function_definition) @function",
           c = "(function_definition) @function",
           java = "(method_declaration) @function",
-        },
+        }, ]]
       },
     },
   },
@@ -34,7 +36,5 @@ local configs = {
     enable = true
   }
 }
-
-require'nvim-treesitter.configs'.setup(configs)
 
 return configs
