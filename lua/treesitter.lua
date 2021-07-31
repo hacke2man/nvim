@@ -7,6 +7,30 @@ local configs = {
     -- disable = { "c", "rust" },  -- list of language that will be disabled
   },
   textobjects = {
+    --[[ move = {
+      enable = true,
+      set_jumps = true, -- whether to set jumps in the jumplist
+      goto_next_start = {
+        ["<space>bf"] = "@function.outer",
+        ["<space>bc"] = "@call.outer",
+        ["<space>bp"] = "@parameter.outer",
+      },
+      goto_next_end = {
+        ["<space>ef"] = "@function.outer",
+        ["<space>ec"] = "@call.outer",
+        ["<space>ep"] = "@parameter.outer",
+      },
+      goto_previous_start = {
+        ["<space>Bf"] = "@function.outer",
+        ["<space>Bc"] = "@call.outer",
+        ["<space>Bp"] = "@parameter.outer",
+      },
+      goto_previous_end = {
+        ["<space>Ef"] = "@function.outer",
+        ["<space>Ec"] = "@call.outer",
+        ["<space>Ep"] = "@parameter.outer",
+      },
+    }, ]]
     select = {
       enable = true,
 
@@ -23,11 +47,11 @@ local configs = {
         ["ia"] = "@parameter.inner",
 
         -- Or you can define your own textobjects like this
-        --[[ ["iF"] = {
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-          java = "(method_declaration) @function",
+--[[ ["iF"] = {
+python = "(function_definition) @function",
+cpp = "(function_definition) @function",
+c = "(function_definition) @function",
+java = "(method_declaration) @function",
         }, ]]
       },
     },

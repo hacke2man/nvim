@@ -1,3 +1,8 @@
+nnoremap <silent><leader>e :<c-u>lua require'ts-object-movement'.moveby("next_end")<return>
+nnoremap <silent><leader>E :<c-u>lua require'ts-object-movement'.moveby("previous_end")<return>
+nnoremap <silent><leader>b :<c-u>lua require'ts-object-movement'.moveby("next_start")<return>
+nnoremap <silent><leader>B :<c-u>lua require'ts-object-movement'.moveby("previous_start")<return>
+
 " Functions
 omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
 vnoremap <silent> m :lua require('tsht').nodes()<CR>

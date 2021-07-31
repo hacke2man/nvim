@@ -11,7 +11,12 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim'
 
 -- editing
-    use 'tpope/vim-surround'
+  use {
+    "blackCauldron7/surround.nvim",
+    config = function()
+      require "surround".setup {}
+    end
+  }
     use 'b3nj5m1n/kommentary'
     use {
         'amadeus/vim-convert-color-to',
@@ -50,7 +55,7 @@ return require('packer').startup(function()
 
         -- "npxbr/gruvbox.nvim",
     use {
-        '~/dev/gruv',
+        '~/dev/gruv.nvim',
          config = function ()
             vim.cmd[[colorscheme gruv]]
          end
