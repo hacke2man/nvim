@@ -5,6 +5,7 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  require'completion'.on_attach()
 
   --Enable completion triggered by <c-x><c-o>
   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -60,13 +61,40 @@ require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
 -- vim.api.cmd("echo \"" .. servers[1] .. ""\"")
+local settings = {}
 for _, server in pairs(servers) do
+  if server == "lua" then
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim', 'use' }
+            }
+        }
+    }
+    else
+    settings = {}
+  end
   require'lspconfig'[server].setup{
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
        debounce_text_changes = 500,
     },
-    require "lsp_signature".on_attach(),
+    settings = settings
   }
 end
+
+--[[ function IsModuleAvailable(name)
+  if package.loaded[name] then
+    return true
+  else
+    for _, searcher in ipairs(package.searchers or package.loaders) do
+      local loader = searcher(name)
+      if type(loader) == 'function' then
+        package.preload[name] = loader
+        return true
+      end
+    end
+    return false
+  end
+end ]]

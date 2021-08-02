@@ -6,31 +6,14 @@ local configs = {
     enable = true,              -- false will disable the whole extension
     -- disable = { "c", "rust" },  -- list of language that will be disabled
   },
+  rainbow = {
+    enable = true,
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    -- max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  },
   textobjects = {
-    --[[ move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        ["<space>bf"] = "@function.outer",
-        ["<space>bc"] = "@call.outer",
-        ["<space>bp"] = "@parameter.outer",
-      },
-      goto_next_end = {
-        ["<space>ef"] = "@function.outer",
-        ["<space>ec"] = "@call.outer",
-        ["<space>ep"] = "@parameter.outer",
-      },
-      goto_previous_start = {
-        ["<space>Bf"] = "@function.outer",
-        ["<space>Bc"] = "@call.outer",
-        ["<space>Bp"] = "@parameter.outer",
-      },
-      goto_previous_end = {
-        ["<space>Ef"] = "@function.outer",
-        ["<space>Ec"] = "@call.outer",
-        ["<space>Ep"] = "@parameter.outer",
-      },
-    }, ]]
     select = {
       enable = true,
 
@@ -45,14 +28,12 @@ local configs = {
         ["ic"] = "@call.inner",
         ["aa"] = "@parameter.outer",
         ["ia"] = "@parameter.inner",
-
-        -- Or you can define your own textobjects like this
---[[ ["iF"] = {
-python = "(function_definition) @function",
-cpp = "(function_definition) @function",
-c = "(function_definition) @function",
-java = "(method_declaration) @function",
-        }, ]]
+        ["al"] = "@loop.outer",
+        ["il"] = "@loop.inner",
+        ["ae"] = "@conditional.outer",
+        ["ie"] = "@conditional.inner",
+        ["ai"] = "@comment.outer",
+        ["ii"] = "@comment.inner",
       },
     },
   },
