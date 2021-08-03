@@ -5,6 +5,7 @@ local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+  require'completion'.on_attach()
 
   --Enable completion triggered by <c-x><c-o>
   -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -17,7 +18,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  -- buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -25,7 +26,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
@@ -60,13 +61,40 @@ require'lspinstall'.setup() -- important
 
 local servers = require'lspinstall'.installed_servers()
 -- vim.api.cmd("echo \"" .. servers[1] .. ""\"")
+local settings = {}
 for _, server in pairs(servers) do
+  if server == "lua" then
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim', 'use' }
+            }
+        }
+    }
+    else
+    settings = {}
+  end
   require'lspconfig'[server].setup{
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
        debounce_text_changes = 500,
     },
-    require "lsp_signature".on_attach(),
+    settings = settings
   }
 end
+
+--[[ function IsModuleAvailable(name)
+  if package.loaded[name] then
+    return true
+  else
+    for _, searcher in ipairs(package.searchers or package.loaders) do
+      local loader = searcher(name)
+      if type(loader) == 'function' then
+        package.preload[name] = loader
+        return true
+      end
+    end
+    return false
+  end
+end ]]

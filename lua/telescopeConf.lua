@@ -1,7 +1,15 @@
+local fd_opts = '{find_command={"fd",".","--type","f","--one-file-system","--hidden","--ignore-file=' .. vim.env.HOME .. '/.gitignore"}}'
+
+local theme = function(opts)
+  return 'require"telescope.themes".get_ivy(' .. opts .. ')'
+end
+
+local ff = ':lua require"telescope.builtin".find_files(' .. theme(fd_opts) .. ')<return>'
 vim.api.nvim_set_keymap(
   'n',
   '<space>f',
-  ':Telescope find_files theme=get_ivy<Return>',
+  -- ':Telescope find_files theme=get_ivy<Return>',
+  ff,
   {noremap = true, silent = true}
 )
 
@@ -56,6 +64,14 @@ require('telescope').setup{
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
     -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = true,
+        override_file_sorter = true,
+      }
+    }
   }
 }
+
+require('telescope').load_extension('fzy_native')

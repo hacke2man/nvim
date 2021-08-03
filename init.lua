@@ -1,7 +1,29 @@
 -- Nvim Configuration
--- IDEAS
--- 1.make telescope mapping for adding a file as a split
--- 2.make mapping for closing split without deleting buffer
+local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+}
 
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end
+
+require'vim_func'
 require'plugins'
 require'settings'
