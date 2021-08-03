@@ -47,14 +47,13 @@ o.cmdheight = 1
 o.updatetime = 300
 
 -- Don't pass messages to |ins-completion-menu|.
-o.shortmess = o.shortmess + "c"
+o.completeopt="menuone,noinsert,noselect"
+o.shortmess:append"c"
 
 o.signcolumn = "number"
--- o.listchars = {trail = '~', extends = '>', precedes = '<', tab = '>-'}
 o.listchars = "trail:·,extends:>,precedes:<,tab:>-"
 o.list = true
 o.fillchars = "fold: ,vert:█"
--- c[[hi VertSplit guifg='#cc241d']]
 o.termguicolors = true
 
 local map = vim.api.nvim_set_keymap
@@ -106,3 +105,23 @@ map('n', '<space>w', ':write<Return>', nos)
 map('n', '<space>q', ':call Quit()<Return>', nos)
 
 c[[inoremap <c-a> <esc>A]]
+
+-- Auto Commads
+c"autocmd FileType man setlocal scrolloff=999"
+c"autocmd FileType man nnoremap <buffer> \\ /^\\s*-"
+
+-- new
+map('n', 'n', 'nzzzv', nos)
+map('n', 'N', 'Nzzzv', nos)
+
+map('i', '.', '.<c-g>u', nos)
+map('i', ',', ',<c-g>u', nos)
+map('i', '(', '(<c-g>u', nos)
+map('i', '[', '[<c-g>u', nos)
+map('i', '[', '[<c-g>u', nos)
+
+map('v', 'J', [[:<c-u>call execute("'\<,'\>m '>+".(v:count1))<cr>gv=gv]], nos)
+map('v', 'K', [[:<c-u>call execute("'\<,'\>m '<-".(v:count1+1))<cr>gv=gv]], nos)
+map('n', '<c-j>', [[:<c-u>call execute("m .+".(v:count1))<return>]], nos)
+map('n', '<c-k>', [[:<c-u>call execute("m .-".(v:count1+1))<return>]], nos)
+
