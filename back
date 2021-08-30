@@ -1,0 +1,31 @@
+{
+      'nvim-lua/completion-nvim',
+      requires = {
+	'hrsh7th/vim-vsnip',
+	'hrsh7th/vim-vsnip-integ',
+      },
+      config = function ()
+	vim.api.nvim_set_keymap(
+	  'i',
+	  '<Tab>',
+	  [[ pumvisible() ? "\<C-n>" : "\<tab>" ]],
+	  -- [[ pumvisible() ? "\<C-n>" : "\<esc>:call Njump()<cr>" ]],
+	  { expr=true, noremap=true, silent=true })
+
+	vim.api.nvim_set_keymap('i',
+	  '<S-Tab>',
+	  [[ pumvisible() ? "\<C-p>" : "\<tab>" ]],
+	  -- [[ pumvisible() ? "\<C-p>" : "\<esc>:call Pjump()<cr>" ]],
+	  { expr=true, noremap=true, silent=true})
+
+	-- 'pumvisible() ? "\\<C-n>" : cr"\"vsnip#jumpable(1)<esc>:call <SNR>87_jump(1)<Return>\""',
+	--    "vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'"
+	vim.api.nvim_set_keymap('i', '<c-j>',   "vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'", {expr=true})
+	vim.api.nvim_set_keymap('s', '<c-j>',   "vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'", {expr=true})
+	vim.api.nvim_set_keymap('i', '<c-k>', "vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'", {expr=true})
+	vim.api.nvim_set_keymap('s', '<c-k>', "vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'", {expr=true})
+
+	-- possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
+	vim.g.completion_enable_snippet = 'vim-vsnip'
+      end
+    }

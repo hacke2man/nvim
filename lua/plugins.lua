@@ -20,14 +20,21 @@ return require('packer').startup({
     {
       'wbthomason/packer.nvim',
     },
+    {
+      'famiu/nvim-reload'
+    },
     -- TEXT EDITING
     --==============--
     {
-      'blackCauldron7/surround.nvim',
+      'windwp/nvim-ts-autotag',
+    },
+    {
+      'tpope/vim-surround',
+      --[[ 'blackCauldron7/surround.nvim',
       config = function()
 	vim.g.surround_mappings_style = "surround"
 	require "surround".setup {}
-      end
+      end ]]
     },
     {
       'b3nj5m1n/kommentary',
@@ -39,17 +46,34 @@ return require('packer').startup({
       end
     },
     {
-      'hrsh7th/vim-vsnip',
-    },
-    {
       'windwp/nvim-autopairs',
       config = function ()
-	require'autopairs'
-	vim.cmd[[
-	function! AuPair()
-	lua reqire 'nvim-autopairs'.autopairs_cr()
-	endfunction
-	]]
+	require('nvim-autopairs').setup{}
+	-- vim.api.nvim_set_keymap('i' , '<CR>',[[luaeval("require'autopairs_conf'.completion_confirm()")]], {expr = true, noremap = true})
+	local remap = vim.api.nvim_set_keymap
+	local npairs = require('nvim-autopairs')
+
+	-- skip it, if you use another global object
+	_G.MUtils= {}
+
+	vim.g.completion_confirm_key = ""
+
+	MUtils.completion_confirm=function()
+	  if vim.fn.pumvisible() ~= 0  then
+	    if vim.fn.complete_info()["selected"] ~= -1 then
+	      require'completion'.confirmCompletion()
+	      return npairs.esc("<c-y>")
+	    else
+	      vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
+	      require'completion'.confirmCompletion()
+	      return npairs.esc("<c-n><c-y>")
+	    end
+	  else
+	    return npairs.autopairs_cr()
+	  end
+	end
+
+	remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
       end
     },
     {
@@ -66,13 +90,101 @@ return require('packer').startup({
       end
     },
     {
-      'nvim-lua/completion-nvim',
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/vim-vsnip',
+        'hrsh7th/cmp-vsnip',
+        'hrsh7th/cmp-buffer',
+	'hrsh7th/cmp-nvim-lsp',
+	'f3fora/cmp-spell',
+      },
+      config = function()
+	require'cmp_conf'
+      end
+    },
+    {
+      'mhartington/formatter.nvim',
+      config = function()
+	require('formatter').setup({
+	  logging = false,
+	  filetype = {
+	    html = {
+	      -- prettier
+	      function()
+		return {
+		  exe = "prettier",
+		  args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
+		  stdin = true
+		}
+	      end
+	    },
+	    javascript = {
+	      -- prettier
+	      function()
+		return {
+		  exe = "prettier",
+		  args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), '--single-quote'},
+		  stdin = true
+		}
+	      end
+	    },
+	    rust = {
+	      -- Rustfmt
+	      function()
+		return {
+		  exe = "rustfmt",
+		  args = {"--emit=stdout"},
+		  stdin = true
+		}
+	      end
+	    },
+	    lua = {
+	      -- luafmt
+	      function()
+		return {
+		  exe = "luafmt",
+		  args = {"--indent-count", 2, "--stdin"},
+		  stdin = true
+		}
+	      end
+	    },
+	    cpp = {
+	      -- clang-format
+	      function()
+		return {
+		  exe = "clang-format",
+		  args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+		  stdin = true,
+		  cwd = vim.fn.expand('%:p:h')  -- Run clang-format in cwd of the file.
+		}
+	      end
+	    }
+	  }
+	});
+      end
+    },
+    {
+      "Pocco81/HighStr.nvim",
       config = function ()
-	vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', { expr=true, noremap=true })
-	vim.api.nvim_set_keymap('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<S-Tab>"', { expr=true, noremap=true})
+	local high_str = require("high-str")
 
-	-- possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
-	vim.g.completion_enable_snippet = 'vim-vsnip'
+	high_str.setup({
+	  verbosity = 0,
+	  saving_path = "/tmp/highstr/",
+	  highlight_colors = {
+	    -- color_id = {"bg_hex_code",<"fg_hex_code"/"smart">}
+	    color_0 = {"#504945", "smart"},-- dark
+	    color_1 = {"#d79921", "smart"},	-- Pastel yellow
+	    color_2 = {"#83a598", "smart"},	-- Aqua menthe
+	    color_3 = {"#b16286", "smart"},	-- Proton purple
+	    color_4 = {"#cc241d", "smart"},	-- Orange red
+	    color_5 = {"#98971a", "smart"},	-- Office green
+	    color_6 = {"#458588", "smart"},	-- Just blue
+	    color_7 = {"#d3869b", "smart"},	-- Blush pink
+	    color_8 = {"#fbf1c7", "smart"},	-- Cosmic latte
+	    color_9 = {"#fe8019", "smart"},	-- Fallow brown
+	  }
+	})
       end
     },
 
@@ -139,7 +251,12 @@ return require('packer').startup({
       end,
 
     },
-
+    {
+      'famiu/bufdelete.nvim',
+      config = function ()
+	vim.api.nvim_set_keymap('n', '<space>d', ':lua require"bufdelete".bufdelete(0,true)<return>', {silent=true})
+      end
+    },
     -- BACKEND
     --=========--
     {
@@ -176,10 +293,10 @@ return require('packer').startup({
 	nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
 	nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
 	nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
-	nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
+	command! B lua require'dap'.toggle_breakpoint()
 	" nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 	" nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
-	nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+	command! O lua require'dap'.repl.open()<CR>
 	" nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 	]]
 
@@ -203,10 +320,12 @@ return require('packer').startup({
     {
       'nvim-treesitter/nvim-treesitter-textobjects',
       config = function()
-	vim.api.nvim_set_keymap('n', '<space>e',':<c-u>lua require"ts-object-movement".moveby("next_end")<return>', {noremap=true, silent=true})
-	vim.api.nvim_set_keymap('n', '<space>E',':<c-u>lua require"ts-object-movement".moveby("previous_end")<return>', {noremap=true, silent=true})
-	vim.api.nvim_set_keymap('n', '<space>b',':<c-u>lua require"ts-object-movement".moveby("next_start")<return>', {noremap=true, silent=true})
-	vim.api.nvim_set_keymap('n', '<space>B',':<c-u>lua require"ts-object-movement".moveby("previous_start")<return>', {noremap=true, silent=true})
+	vim.api.nvim_set_keymap('n', '<space>n',':<c-u>lua require"ts-object-movement".moveby("next_start")<return>', {noremap=true, silent=true})
+	vim.api.nvim_set_keymap('n', '<space>N',':<c-u>lua require"ts-object-movement".moveby("next_end")<return>', {noremap=true, silent=true})
+	vim.api.nvim_set_keymap('n', '<space>b',':<c-u>lua require"ts-object-movement".moveby("previous_start")<return>', {noremap=true, silent=true})
+	vim.api.nvim_set_keymap('n', '<space>B',':<c-u>lua require"ts-object-movement".moveby("previous_end")<return>', {noremap=true, silent=true})
+	vim.api.nvim_set_keymap('n', ']',':<c-u>lua require"ts-object-movement".repeatmoveby("next_start")<return>', {noremap=true, silent=true})
+	vim.api.nvim_set_keymap('n', '[',':<c-u>lua require"ts-object-movement".repeatmoveby("previous_start")<return>', {noremap=true, silent=true})
 	end
     },
     {
@@ -231,24 +350,26 @@ return require('packer').startup({
     },
     {
       'szw/vim-dict',
-      config = function ()
+      --[[ config = function ()
 	vim.api.nvim_set_keymap(
 	  'n',
 	  '<space>dic',
 	  ':Dict <c-r>=expand("<cword>")<Return><Return>',
 	  {noremap=true}
 	)
-      end,
+      end, ]]
     },
     {
+      'tanvirtin/vgit.nvim',
+      requires = 'nvim-lua/plenary.nvim',
+    },
+    --[[ {
       'lewis6991/gitsigns.nvim',
-      requires = {
-	'nvim-lua/plenary.nvim'
-      },
+      -- requires = 'nvim-lua/plenary.nvim',
       config =function ()
 	require'gitsigns_conf'
       end,
-    },
+    }, ]]
     {
       'nvim-treesitter/nvim-treesitter',
       config =function ()

@@ -1,6 +1,10 @@
 local o = vim.opt
 local c = vim.cmd
+c("autocmd BufEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
+-- c("au FileType c,cpp setlocal comments-=:// comments+=f://")
 -- Nvim settings
+-- o.formatoptions:remove "cro"
+o.guicursor = ""
 o.compatible = false
 o.wrap = false
 o.relativenumber = true
@@ -102,7 +106,7 @@ map('n', '<space>h', ':BufferPrevious', nos)
 map('n', '<space>', '', nos)
 map('n', '<space><return>', ':<up><return>]', nos)
 map('n', '<space>w', ':write<Return>', nos)
-map('n', '<space>q', ':call Quit()<Return>', nos)
+map('n', '<space>q', ':quit<Return>', nos)
 
 c[[inoremap <c-a> <esc>A]]
 
@@ -122,6 +126,6 @@ map('i', '[', '[<c-g>u', nos)
 
 map('v', 'J', [[:<c-u>call execute("'\<,'\>m '>+".(v:count1))<cr>gv=gv]], nos)
 map('v', 'K', [[:<c-u>call execute("'\<,'\>m '<-".(v:count1+1))<cr>gv=gv]], nos)
-map('n', '<c-j>', [[:<c-u>call execute("m .+".(v:count1))<return>]], nos)
-map('n', '<c-k>', [[:<c-u>call execute("m .-".(v:count1+1))<return>]], nos)
+map('n', '<m-j>', [[:<c-u>call execute("m .+".(v:count1))<return>]], nos)
+map('n', '<m-k>', [[:<c-u>call execute("m .-".(v:count1+1))<return>]], nos)
 

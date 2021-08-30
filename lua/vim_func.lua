@@ -1,5 +1,20 @@
 --rewrite in lua
 vim.cmd[[
+function Njump()
+   if vsnip#jumpable(1)
+      call <SNR>87_jump(1)
+   else
+   call feedkeys("a\<tab>", 'n')
+   endif
+endfunction
+
+function Pjump()
+   if vsnip#jumpable(1)
+      call <SNR>87_jump(-1)
+   else
+   call feedkeys("a\<tab>", 'n')
+   endif
+endfunction
 " Functions
 command -nargs=1 Rename :call RenameFile(<f-args>)
 command -nargs=1 R :call RenameFile(<f-args>)
@@ -31,16 +46,6 @@ function Delete()
 
    echo system("rm " . path)
    bd!
-endfunction
-
-function Quit()
-   let bufNum=len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-   let f = expand(&filetype)
-   if (bufNum == 1)
-      q
-   else
-      bd
-   endif
 endfunction
 
 function Sync()

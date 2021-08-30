@@ -1,4 +1,4 @@
-local fd_opts = '{find_command={"fd",".","--type","f","--one-file-system","--hidden","--ignore-file=' .. vim.env.HOME .. '/.gitignore"}}'
+local fd_opts = '{find_command={"fd",".","--type","f","--one-file-system"}}'
 
 local theme = function(opts)
   return 'require"telescope.themes".get_ivy(' .. opts .. ')'
@@ -25,7 +25,6 @@ require('telescope').setup{
     vimgrep_arguments = {
       'rg',
       -- '--hidden',
-      '--ignore-file=/liam/home/.gitignore',
       '--one-file-system',
       '--color=never',
       '--no-heading',
