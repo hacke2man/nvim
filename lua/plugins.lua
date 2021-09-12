@@ -27,9 +27,6 @@ return require('packer').startup({
     -- TEXT EDITING
     --==============--
     {
-      'windwp/nvim-ts-autotag',
-    },
-    {
       'tpope/vim-surround',
     },
     {
@@ -39,37 +36,6 @@ return require('packer').startup({
       'amadeus/vim-convert-color-to',
       config=function()
 	vim.api.nvim_set_keymap('n', '<space>cc', ':ConvertColorTo ', {noremap = true})
-      end
-    },
-    {
-      'windwp/nvim-autopairs',
-      config = function ()
-	require('nvim-autopairs').setup{}
-	-- vim.api.nvim_set_keymap('i' , '<CR>',[[luaeval("require'autopairs_conf'.completion_confirm()")]], {expr = true, noremap = true})
-	local remap = vim.api.nvim_set_keymap
-	local npairs = require('nvim-autopairs')
-
-	-- skip it, if you use another global object
-	_G.MUtils= {}
-
-	vim.g.completion_confirm_key = ""
-
-	MUtils.completion_confirm=function()
-	  if vim.fn.pumvisible() ~= 0  then
-	    if vim.fn.complete_info()["selected"] ~= -1 then
-	      require'completion'.confirmCompletion()
-	      return npairs.esc("<c-y>")
-	    else
-	      vim.api.nvim_select_popupmenu_item(0 , false , false ,{})
-	      require'completion'.confirmCompletion()
-	      return npairs.esc("<c-n><c-y>")
-	    end
-	  else
-	    return npairs.autopairs_cr()
-	  end
-	end
-
-	remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
       end
     },
     {
