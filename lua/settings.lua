@@ -99,14 +99,14 @@ map('n', 'j', [[(v:count > 1 ? "m'" . v:count : '') .'j']], {expr=true, noremap=
 
 -- Buffer
 map('n', '<space>v', ':vs<return>', nos)
-map('n', '<space>l', ':BufferNext', nos)
-map('n', '<space>h', ':BufferPrevious', nos)
+map('n', '<space>l', ':bnext<cr>', nos)
+map('n', '<space>h', ':bprevious<cr>', nos)
 
 -- Leader
 map('n', '<space>', '', nos)
 map('n', '<space><return>', ':<up><return>]', nos)
 map('n', '<space>w', ':write<Return>', nos)
-map('n', '<space>q', ':quit<Return>', nos)
+map('n', '<space>q', '<c-w>q', nos)
 
 c[[inoremap <c-a> <esc>A]]
 

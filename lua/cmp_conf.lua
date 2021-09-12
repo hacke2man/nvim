@@ -75,6 +75,7 @@ completion = {
         {name = "buffer"},
         {name = "nvim_lsp"},
         { name = 'spell' },
+        { name = 'path' },
         -- {name = "nuspell"},
     },
 })

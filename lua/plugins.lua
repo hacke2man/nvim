@@ -17,6 +17,7 @@ vim.cmd "autocmd VimEnter * call Sync()" ]]
 return require('packer').startup({
   {  -- PLUGIN MANAGER
      --================--
+     --HINT: Plugin Manager
     {
       'wbthomason/packer.nvim',
     },
@@ -30,11 +31,6 @@ return require('packer').startup({
     },
     {
       'tpope/vim-surround',
-      --[[ 'blackCauldron7/surround.nvim',
-      config = function()
-	vim.g.surround_mappings_style = "surround"
-	require "surround".setup {}
-      end ]]
     },
     {
       'b3nj5m1n/kommentary',
@@ -90,13 +86,21 @@ return require('packer').startup({
       end
     },
     {
+        'hrsh7th/vim-vsnip',
+	config = function ()
+	  vim.g.vsnip_snippet_dir = os.getenv("XDG_CONFIG_HOME") .. "/nvim/vsnip"
+	  vim.api.nvim_set_keymap('i', '<c-j>', 'vsnip#jumpable(1)   ? \'<Plug>(vsnip-jump-next)\' : \'<c-j>\'', {expr = true})
+	  vim.api.nvim_set_keymap('i', '<c-k>', 'vsnip#jumpable(-1)  ? \'<Plug>(vsnip-jump-prev)\' : \'<c-k>\'', {expr = true})
+	end
+    },
+    {
       'hrsh7th/nvim-cmp',
       requires = {
-        'hrsh7th/vim-vsnip',
         'hrsh7th/cmp-vsnip',
         'hrsh7th/cmp-buffer',
 	'hrsh7th/cmp-nvim-lsp',
 	'f3fora/cmp-spell',
+	'hrsh7th/cmp-path',
       },
       config = function()
 	require'cmp_conf'
@@ -191,6 +195,73 @@ return require('packer').startup({
     -- LAF
     --=====--
     {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+	vim.api.nvim_set_keymap('n', '<space>ic', ':TodoTrouble<cr>', {silent=true})
+	require("todo-comments").setup {
+	  -- your configuration comes here
+	  -- or leave it empty to use the default settings
+	  -- refer to the configuration section below
+	  {
+	    signs = true, -- show icons in the signs column
+	    sign_priority = 8, -- sign priority
+	    -- keywords recognized as todo comments
+	    keywords = {
+	      FIX = {
+		icon = " ", -- icon used for the sign, and in search results
+		color = "error", -- can be a hex color, or a named color (see below)
+		alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+		-- signs = false, -- configure signs for some keywords individually
+	      },
+	      TODO = { icon = " ", color = "info" },
+	      HACK = { icon = " ", color = "warning" },
+	      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+	      PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+	      NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+	    },
+	    merge_keywords = true, -- when true, custom keywords will be merged with the defaults
+	    -- highlighting of the line containing the todo comment
+	    -- * before: highlights before the keyword (typically comment characters)
+	    -- * keyword: highlights of the keyword
+	    -- * after: highlights after the keyword (todo text)
+	    highlight = {
+	      before = "", -- "fg" or "bg" or empty
+	      keyword = "wide", -- "fg", "bg", "wide" or empty. (wide is the same as bg, but will also highlight surrounding characters)
+	      after = "fg", -- "fg" or "bg" or empty
+	      pattern = [[.*<(KEYWORDS)\s*:]], -- pattern or table of patterns, used for highlightng (vim regex)
+	      comments_only = true, -- uses treesitter to match keywords in comments only
+	      max_line_len = 400, -- ignore lines longer than this
+	      exclude = {}, -- list of file types to exclude highlighting
+	    },
+	    -- list of named colors where we try to extract the guifg from the
+	    -- list of hilight groups or use the hex color if hl not found as a fallback
+	    colors = {
+	      error = { "LspDiagnosticsDefaultError", "ErrorMsg", "#DC2626" },
+	      warning = { "LspDiagnosticsDefaultWarning", "WarningMsg", "#FBBF24" },
+	      info = { "LspDiagnosticsDefaultInformation", "#2563EB" },
+	      hint = { "LspDiagnosticsDefaultHint", "#10B981" },
+	      default = { "Identifier", "#7C3AED" },
+	    },
+	    search = {
+	      command = "rg",
+	      args = {
+		"--color=never",
+		"--no-heading",
+		"--with-filename",
+		"--line-number",
+		"--column",
+	      },
+	      -- regex that will be used to match keywords.
+	      -- don't replace the (KEYWORDS) placeholder
+	      pattern = [[\b(KEYWORDS):]], -- ripgrep regex
+	      -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+	    },
+	  }
+	}
+      end
+    },
+    {
       "rktjmp/lush.nvim",
     },
     {
@@ -209,21 +280,6 @@ return require('packer').startup({
 	require'el_conf'
       end
     },
-    {
-      'romgrk/barbar.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true},
-      config = function ()
-	vim.api.nvim_set_keymap('n', '<space>l', ':BufferNext<cr>', { noremap = true, silent = true})
-	vim.api.nvim_set_keymap('n', '<space>h', ':BufferPrevious<cr>', { noremap = true, silent = true})
-	vim.g.bufferline = {
-	  icon_separator_active = '',
-	  icon_separator_inactive = '',
-	  icon_close_tab = '',
-	  icon_close_tab_modified = '●'
-	}
-      end
-    },
-
     -- NAVIGATION
     --============--
     {
@@ -326,7 +382,7 @@ return require('packer').startup({
 	vim.api.nvim_set_keymap('n', '<space>B',':<c-u>lua require"ts-object-movement".moveby("previous_end")<return>', {noremap=true, silent=true})
 	vim.api.nvim_set_keymap('n', ']',':<c-u>lua require"ts-object-movement".repeatmoveby("next_start")<return>', {noremap=true, silent=true})
 	vim.api.nvim_set_keymap('n', '[',':<c-u>lua require"ts-object-movement".repeatmoveby("previous_start")<return>', {noremap=true, silent=true})
-	end
+      end
     },
     {
       'p00f/nvim-ts-rainbow',
@@ -340,6 +396,7 @@ return require('packer').startup({
 	  --or leave it empty to  the default settings
 	  --refer to the configuration section below
 	}
+	vim.api.nvim_set_keymap('n', '<space>il', ':Trouble<cr>', {silent=true})
       end
     },
     {
@@ -350,25 +407,25 @@ return require('packer').startup({
     },
     {
       'szw/vim-dict',
-      --[[ config = function ()
-	vim.api.nvim_set_keymap(
-	  'n',
-	  '<space>dic',
-	  ':Dict <c-r>=expand("<cword>")<Return><Return>',
-	  {noremap=true}
-	)
+--[[ config = function ()
+vim.api.nvim_set_keymap(
+'n',
+'<space>dic',
+':Dict <c-r>=expand("<cword>")<Return><Return>',
+{noremap=true}
+)
       end, ]]
     },
     {
       'tanvirtin/vgit.nvim',
       requires = 'nvim-lua/plenary.nvim',
     },
-    --[[ {
-      'lewis6991/gitsigns.nvim',
-      -- requires = 'nvim-lua/plenary.nvim',
-      config =function ()
-	require'gitsigns_conf'
-      end,
+--[[ {
+'lewis6991/gitsigns.nvim',
+-- requires = 'nvim-lua/plenary.nvim',
+config =function ()
+require'gitsigns_conf'
+end,
     }, ]]
     {
       'nvim-treesitter/nvim-treesitter',
@@ -395,9 +452,11 @@ return require('packer').startup({
       config = function ()
 	vim.g.indent_blankline_context_highlight_list = {'IndentBlankline'}
 	vim.g.indent_blankline_use_treesitter = true
-	vim.g.indent_blankline_filetype_exclude = {'help','TelescopePrompt'}
-	vim.g.indent_blankline_show_current_context = true
-	vim.g.indent_blankline_buftype_exclude = {'TelescopePrompt'}
+	vim.g.indent_blankline_filetype_exclude = {
+          'help',
+          'TelescopePrompt',
+	  'Trouble'
+        }
 	vim.g.indent_blankline_context_patterns = {
 	  'if',
 	  'class',
@@ -437,16 +496,6 @@ return require('packer').startup({
       config =function ()
 	require'toggleterm_conf'
       end,
-    },
-    {
-      'TimUntersberger/neogit',
-      requires = {
-	'nvim-lua/plenary.nvim',
-	'sindrets/diffview.nvim'
-      },
-      config = function ()
-	require'neogit_conf'
-      end
     },
     {
       'sindrets/diffview.nvim',

@@ -1,0 +1,24 @@
+{
+  "CBoilerplate": {
+    "prefix": "boil",
+    "body": [
+      "#include <stdio.h>",
+      "",
+      "int main(int argc, char * argv[]) {",
+      "  $1",
+      "}"
+    ]
+  },
+  "printfVar": {
+    "prefix": "pv",
+    "body": [
+      "printf(\"%$1\\n\", $2);"
+    ]
+  },
+  "printfMsg": {
+    "prefix": "pm",
+    "body": [
+      "printf(\"$1\\n\");"
+    ]
+  }
+}

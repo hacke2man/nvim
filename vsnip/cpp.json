@@ -1,0 +1,20 @@
+{
+  "HeaderBoilerplate": {
+    "prefix": "boil",
+    "body": [
+      "#ifndef __$1_H__",
+      "#define __$1_H__",
+      "",
+      "#ifdef __cplusplus",
+      "extern \"C\" {",
+      "#endif",
+      "  $2",
+      "#ifdef __cplusplus",
+      "}",
+      "#endif",
+      "",
+      "#endif"
+    ],
+    "description": "jfioewjfoiewie"
+  }
+}

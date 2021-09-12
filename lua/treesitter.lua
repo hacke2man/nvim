@@ -40,9 +40,9 @@ local configs = {
       },
     },
   },
-  indent = {
+  --[[ indent = {
     enable = true
-  }
+  } ]]
 }
 
 return configs
